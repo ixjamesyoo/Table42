@@ -24,8 +24,13 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = merge({}, this.state);
-    this.props.processForm(user);
+    if ( this.props.formType === "signup" &&
+    this.state.password !== this.state.passwordConfirmation ){
+      this.props.receiveErrors(["Password confirmation does not match."]);
+    } else {
+      const user = merge({}, this.state);
+      this.props.processForm(user);
+    }
   }
 
   initialState() {
@@ -70,8 +75,8 @@ class SessionForm extends React.Component {
       [
         <input key="passwordConfirmation" type="password"
           value={ passwordConfirmation }
-          onChange={ this.updateField("password_confirmation") }
-          placeholder="Confirm password *"/>,
+          onChange={ this.updateField("passwordConfirmation") }
+          placeholder="Confirm Password *"/>,
         <input key="zipcode" type="text" value={ zipcode }
           onChange={ this.updateField("zipcode") }
           placeholder="Enter Zipcode *"/>
@@ -144,8 +149,8 @@ class SessionForm extends React.Component {
     return (
       <div className="session-form-container">
         <div className="session-form-header">
-          <div onClick={this.props.closeModal}
-            className="close-modal">&times;</div>
+          <button onClick={this.props.closeModal}
+            className="close-button">&times;</button>
           { this.formHeader() }
           { this.errorMessages() }
         </div>
