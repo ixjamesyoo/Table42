@@ -35,9 +35,9 @@ export const signup = user => dispatch => {
   return SessionAPIUtil.signup(user).then(currentUser => {
     dispatch(receiveCurrentUser(currentUser));
     dispatch(closeModal());
-  }, err => (
-    dispatch(receiveSessionErrors(err.responseJSON))
-  ));
+  }, err => {
+    dispatch(receiveSessionErrors(err.responseJSON));
+  });
 };
 
 export const login = user => dispatch => {

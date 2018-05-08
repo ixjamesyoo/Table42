@@ -3,6 +3,7 @@ import {
   RECEIVE_CURRENT_USER,
   CLEAR_SESSION_ERRORS
 } from '../actions/session_actions';
+import { CLOSE_MODAL } from "../actions/modal_actions";
 
 export default (state = [], action) => {
   Object.freeze(state);
@@ -11,6 +12,7 @@ export default (state = [], action) => {
       return action.errors;
     case RECEIVE_CURRENT_USER:
     case CLEAR_SESSION_ERRORS:
+    case CLOSE_MODAL:
       return [];
     default:
       return state;

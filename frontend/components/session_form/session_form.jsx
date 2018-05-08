@@ -4,12 +4,15 @@ import merge from "lodash/merge";
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.initialState();
+    this.state = {
+      fname: "",
+      lname: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+      zipcode: ""
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.clearSessionErrors();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,28 +29,10 @@ class SessionForm extends React.Component {
     e.preventDefault();
     if ( this.props.formType === "signup" &&
     this.state.password !== this.state.passwordConfirmation ){
-      this.props.receiveErrors(["Password confirmation does not match."]);
+      this.props.receiveSessionErrors(["Password confirmation does not match."]);
     } else {
       const user = merge({}, this.state);
       this.props.processForm(user);
-    }
-  }
-
-  initialState() {
-    if (this.props.formType === "login") {
-      return {
-        email: "",
-        password: ""
-      };
-    } else {
-      return {
-        fname: "",
-        lname: "",
-        email: "",
-        password: "",
-        passwordConfirmation: "",
-        zipcode: ""
-      };
     }
   }
 

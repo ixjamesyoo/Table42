@@ -1,4 +1,5 @@
 export const signup = (user) => {
+  delete user.passwordConfirmation;
   return $.ajax({
     method: "POST",
     url: "/api/users",
@@ -7,6 +8,10 @@ export const signup = (user) => {
 };
 
 export const login = (user) => {
+  delete user.fname;
+  delete user.lname;
+  delete user.passwordConfirmation;
+  delete user.zipcode;
   return $.ajax({
     method: "POST",
     url: "/api/session",
