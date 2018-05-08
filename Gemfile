@@ -31,7 +31,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'pry-rails'
-gem 'annotate'
 gem 'jquery-rails'
 
 group :development, :test do
@@ -42,6 +41,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'annotate'
 end
 
 group :development do
