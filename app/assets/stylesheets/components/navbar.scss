@@ -1,0 +1,24 @@
+.navbar-container {
+  background: #F5F5F5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: 14px;
+  height: 30px;
+}
+
+.navbar-button-container {
+  display:flex;
+  justify-content: space-between;
+}
+
+.navbar-button {
+  background: #237b98;
+  border:0.2px solid #1c627a;
+  border-radius: 5px;
+  padding: 6px 16px;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}

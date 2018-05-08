@@ -25,8 +25,8 @@ export default ({ loggedIn, currentUser, openModal, login, logout }) => {
   } else {
     buttonDiv = (
       <div className="navbar-button-container">
-        <button onClick={ () => openModal("signup") }>Sign Up</button>
-        <button onClick={ () => openModal("login") }>Log In</button>
+        <button className="navbar-button" onClick={ () => openModal("signup") }>Sign Up</button>
+        <button className="navbar-button" onClick={ () => openModal("login") }>Log In</button>
       </div>
     );
   }
