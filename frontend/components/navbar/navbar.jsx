@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default ({ loggedIn, currentUser, openModal, login, logout }) => {
+export default ({ loggedIn, currentUser, openModal, login, logout, history }) => {
 
   const logoDiv = (
       <div className="navbar-logo">
@@ -11,6 +11,10 @@ export default ({ loggedIn, currentUser, openModal, login, logout }) => {
       </div>
   );
 
+  const handleLogout = () => {
+    logout().then(() => history.push("/"));
+  };
+
   let buttonDiv;
   if (loggedIn) {
     // once user profile page is created add Link here
@@ -19,7 +23,7 @@ export default ({ loggedIn, currentUser, openModal, login, logout }) => {
       <div className="navbar-button-container">
         <h2 className="navbar-greeting">Hi, { currentUser.fname }</h2>
         <button className="navbar-button logout"
-          onClick={ logout }>Log Out</button>
+          onClick={ handleLogout }>Log Out</button>
       </div>
     );
   } else {
@@ -30,7 +34,6 @@ export default ({ loggedIn, currentUser, openModal, login, logout }) => {
       </div>
     );
   }
-
 
   return (
     <nav className="navbar-container">

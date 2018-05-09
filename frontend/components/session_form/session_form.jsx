@@ -86,7 +86,7 @@ class SessionForm extends React.Component {
   }
 
   emailInput() {
-    const placeholder = this.props.formType === "signup" ? "Enter email *" : "Email";
+    const placeholder = this.props.formType === "signup" ? "Enter Email *" : "Email";
     return (
       <input type="email" value={ this.state.email }
         onChange={ this.updateField("email") }
@@ -95,7 +95,7 @@ class SessionForm extends React.Component {
   }
 
   passwordInput() {
-    const placeholder = this.props.formType === "signup" ? "Enter password *" : "Password";
+    const placeholder = this.props.formType === "signup" ? "Enter Password *" : "Password";
     return (
       <input type="password" value={ this.state.password }
         onChange={ this.updateField("password") }
