@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :email, :password_digest, :session_token, :fname, :lname, :zipcode, presence: true
   validates :email, uniqueness: { case_sensitive: false }
   validates :session_token, uniqueness: true
-  validates_format_of :zipcode, with: /\d{5}/, message: "must be 5 digits"
+  validates :zipcode, format: { with: /\d{5}/, message: "must be 5 digits" }
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token

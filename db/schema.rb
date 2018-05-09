@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509184630) do
+ActiveRecord::Schema.define(version: 20180509190906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,12 +18,16 @@ ActiveRecord::Schema.define(version: 20180509184630) do
   create_table "categorizations", force: :cascade do |t|
     t.integer "restaurant_id", null: false
     t.integer "cuisine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cuisine_id"], name: "index_categorizations_on_cuisine_id"
     t.index ["restaurant_id"], name: "index_categorizations_on_restaurant_id"
   end
 
   create_table "cuisines", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["name"], name: "index_cuisines_on_name", unique: true
   end
 
@@ -39,6 +43,8 @@ ActiveRecord::Schema.define(version: 20180509184630) do
     t.time "opening_time", null: false
     t.time "closing_time", null: false
     t.integer "capacity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["city"], name: "index_restaurants_on_city"
     t.index ["closing_time"], name: "index_restaurants_on_closing_time"
     t.index ["name"], name: "index_restaurants_on_name", unique: true
