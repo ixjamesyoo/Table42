@@ -37,12 +37,21 @@
   border-radius: 5px;
   padding: 6px 16px;
   color: white;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
 .navbar-button:hover {
   background: #1c657d;
+}
+
+.demo-button {
+  background: #da3743;
+  border: .2px solid #eee;
+}
+
+.demo-button:hover {
+  background: #c2242e;
 }
 
 .navbar-greeting {

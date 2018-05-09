@@ -16,6 +16,10 @@ export default ({ loggedIn, currentUser, openModal, login, logout, history }) =>
     logout().then(() => history.push("/"));
   };
 
+  const handleDemo = () => {
+    login({ email: "guest@guest.com", password: "password" });
+  };
+
   let buttonDiv;
   if (loggedIn) {
     // once user profile page is created add Link here
@@ -32,6 +36,7 @@ export default ({ loggedIn, currentUser, openModal, login, logout, history }) =>
       <div className="navbar-button-container">
         <button className="navbar-button" onClick={ () => openModal("signup") }>Sign Up</button>
         <button className="navbar-button" onClick={ () => openModal("login") }>Log In</button>
+        <button className="navbar-button demo-button" onClick={ handleDemo }>Demo</button>
       </div>
     );
   }

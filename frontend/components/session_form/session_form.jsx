@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
       zipcode: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,6 +43,11 @@ class SessionForm extends React.Component {
       const user = merge({}, this.state);
       this.props.processForm(user);
     }
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    this.props.processForm({ email: "guest@guest.com", password: "password" });
   }
 
   nameInputs() {
@@ -122,6 +128,14 @@ class SessionForm extends React.Component {
     return (<input className="session-submit" type="submit" value={ buttonText } />);
   }
 
+  demoButton() {
+    if (this.props.formType === "signup") return null;
+    return (
+      <button onClick={ this.handleDemo }
+        className="session-submit demo-submit" >Guest Login</button>
+    );
+  }
+
   formHeader() {
     const heading = this.props.formType === "signup" ? "Welcome to Table42!" : "Please Sign In";
     return (<h3>{ heading }</h3>);
@@ -160,6 +174,7 @@ class SessionForm extends React.Component {
           { this.passwordInput() }
           { this.passwordConfirmationAndZipcodeInput() }
           { this.submitButton() }
+          { this.demoButton() }
         </form>
 
         { this.switchFormLink() }
