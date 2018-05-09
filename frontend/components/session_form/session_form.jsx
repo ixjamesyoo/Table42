@@ -18,6 +18,14 @@ class SessionForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.formType !== nextProps.formType) {
       this.props.clearSessionErrors();
+      this.setState({
+        fname: "",
+        lname: "",
+        email: "",
+        password: "",
+        passwordConfirmation: "",
+        zipcode: ""
+      });
     }
   }
 
@@ -44,9 +52,11 @@ class SessionForm extends React.Component {
       [
         <input key="fname" type="text" value={ fname }
           onChange={ this.updateField("fname") }
+          className="session-form-input"
           placeholder="First Name *"/>,
         <input key="lname" type="text" value={ lname }
           onChange={ this.updateField("lname") }
+          className="session-form-input"
           placeholder="Last Name *"/>
       ]
     );
@@ -61,9 +71,11 @@ class SessionForm extends React.Component {
         <input key="passwordConfirmation" type="password"
           value={ passwordConfirmation }
           onChange={ this.updateField("passwordConfirmation") }
+          className="session-form-input"
           placeholder="Confirm Password *"/>,
         <input key="zipcode" type="text" value={ zipcode }
           onChange={ this.updateField("zipcode") }
+          className="session-form-input"
           placeholder="Enter Zipcode *"/>
       ]
     );
@@ -90,6 +102,7 @@ class SessionForm extends React.Component {
     return (
       <input type="email" value={ this.state.email }
         onChange={ this.updateField("email") }
+        className="session-form-input"
         placeholder={ placeholder } />
     );
   }
@@ -99,13 +112,14 @@ class SessionForm extends React.Component {
     return (
       <input type="password" value={ this.state.password }
         onChange={ this.updateField("password") }
+        className="session-form-input"
         placeholder={ placeholder } />
     );
   }
 
   submitButton() {
     const buttonText = this.props.formType === "signup" ? "Create Account" : "Sign In";
-    return (<input type="submit" value={ buttonText } />);
+    return (<input className="session-submit" type="submit" value={ buttonText } />);
   }
 
   formHeader() {
@@ -133,9 +147,9 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="session-form-container">
+        <button onClick={this.props.closeModal}
+          className="close-button">&times;</button>
         <div className="session-form-header">
-          <button onClick={this.props.closeModal}
-            className="close-button">&times;</button>
           { this.formHeader() }
           { this.errorMessages() }
         </div>

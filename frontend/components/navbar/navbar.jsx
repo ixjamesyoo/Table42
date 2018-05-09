@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 export default ({ loggedIn, currentUser, openModal, login, logout, history }) => {
 
   const logoDiv = (
-      <div className="navbar-logo">
-        <Link to="/">
+      <div>
+        <Link to="/" className="navbar-logo">
+          <img src={ window.images.table42Logo } className="logo-img" alt="table-42-logo"/>
           <h1>Table42</h1>
         </Link>
       </div>

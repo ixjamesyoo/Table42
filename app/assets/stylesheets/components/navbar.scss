@@ -9,7 +9,22 @@
 }
 .navbar-logo {
   margin-left: 10px;
+  display: flex;
 }
+
+.logo-img {
+  height: 60px;
+  width: auto;
+}
+
+.navbar-logo h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-left: 2px;
+}
+
+
 
 .navbar-button-container {
   display:flex;
@@ -24,6 +39,10 @@
   color: white;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.navbar-button:hover {
+  background: #1c657d;
 }
 
 .navbar-greeting {
