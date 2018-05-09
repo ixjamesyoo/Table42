@@ -31,9 +31,16 @@ class Restaurant < ApplicationRecord
   has_many :categorizations
   has_many :cuisines, through: :categorizations
 
+  DINING_INTERVAL = 60
+
   def opening_time_before_closing_time
     unless opening_time < closing_time
       errors[:opening] << "time must be before closing time."
     end
+  end
+
+  def parsed_phone_number
+    num = phone_number
+    "(#{num[0..2]}) #{num[3..5]}-#{num[6..9]}"
   end
 end
