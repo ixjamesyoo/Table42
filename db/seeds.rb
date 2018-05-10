@@ -5,9 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require "net/http"
-require "uri"
-
 User.destroy_all
 Categorization.destroy_all
 Restaurant.destroy_all
@@ -34,7 +31,7 @@ cuisines.each do |cuisine|
   Cuisine.create!(name: cuisine[0])
 end
 
-key = "f5ff512916012b0c654aa8adea1b2227"
+key = ENV["zomato_key"]
 
 cities = [
   ["New York City", "280", "New York"],
