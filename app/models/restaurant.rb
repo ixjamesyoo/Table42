@@ -28,7 +28,7 @@ class Restaurant < ApplicationRecord
 
   validate :opening_time_before_closing_time
 
-  has_many :categorizations
+  has_many :categorizations, dependent: :destroy
   has_many :cuisines, through: :categorizations
 
   DINING_INTERVAL = 60
