@@ -9,7 +9,7 @@
 #
 
 class Cuisine < ApplicationRecord
-  has_many :categorizations
+  has_many :categorizations, dependent: :destroy
   has_many :restaurants, through: :categorizations
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
