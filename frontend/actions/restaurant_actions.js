@@ -12,7 +12,7 @@ export const CLEAR_SEARCH_ERRORS = "CLEAR_SEARCH_ERRORS";
 // 3. UPDATE receiveRestaurant/receiveRestaurants, along with reducers once reviews, etc implemented
 // will receive payload information instead of just restaurant
 
-export const receiveRestaurant = (restaurant) => {
+export const receiveRestaurant = ({ restaurant }) => {
   return ({
     type: RECEIVE_RESTAURANT,
     restaurant
@@ -48,8 +48,8 @@ export const clearSearchErrors = () => {
 };
 
 export const fetchRestaurant = id => dispatch => {
-  return RestaurantAPIUtil.fetchRestaurant(id).then( restaurant => {
-    dispatch(receiveRestaurant(restaurant));
+  return RestaurantAPIUtil.fetchRestaurant(id).then( payload => {
+    dispatch(receiveRestaurant(payload));
   }, err => {
     dispatch(receiveSearchErrors(err.responseJSON));
   });
