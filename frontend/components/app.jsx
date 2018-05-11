@@ -22,6 +22,7 @@ const App = () => (
     <Route path="/" component={ NavBar }/>
     <Switch>
       <Route exact path="/" component={ HomePage }/>
+      
     </Switch>
   </div>
 );
