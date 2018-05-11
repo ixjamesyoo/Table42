@@ -14,6 +14,8 @@ import HomePage from "./home_page/home_page";
 // 3. profile page  -- /my/profile  backend users :show with validation
 // my/profile/reviews  my/profile/reservations
 
+// <Route path="/search" component={ SearchIndex }/>
+
 const App = () => (
   <div>
     <Modal />
