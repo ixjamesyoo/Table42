@@ -11,7 +11,7 @@ Restaurant.destroy_all
 Cuisine.destroy_all
 
 User.create!(email: "guest@guest.com", fname: "Guest", lname: "User",
-  password:"password", zipcode:"10018")
+  password:"password", city:"New York City")
 
 cuisines = [
   ["American", "1"],

@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// will need a search bar component, top cuisines, featured cities 
+// will need a search bar component, top cuisines, featured cities
+
+// gameplan for fri:
+// create search bar 
+// create links for cities
 
 
 export default () => {

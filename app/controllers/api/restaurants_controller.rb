@@ -2,10 +2,10 @@ class Api::RestaurantsController < ApplicationController
 
   def index
     if params[:query]
-      @restaurants = Restaurant.search(params[:query])
+      @restaurants = Restaurant.search_by_query(params[:query])
     else
-      base_zip = current_user ? current_user.zipcode : 10036
-      @restaurants = Restaurant.where(zipcode: base_zip)
+      city = current_user ? current_user.city : "New York City"
+      @restaurants = Restaurant.where(city: city).limit(25)
     end
 
     if @restaurants.length > 0

@@ -11,7 +11,7 @@ export const login = (user) => {
   delete user.fname;
   delete user.lname;
   delete user.passwordConfirmation;
-  delete user.zipcode;
+  delete user.city;
   return $.ajax({
     method: "POST",
     url: "/api/session",

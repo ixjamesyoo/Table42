@@ -8,16 +8,15 @@
 #  lname           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  zipcode         :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  city            :string           not null
 #
 
 class User < ApplicationRecord
-  validates :email, :password_digest, :session_token, :fname, :lname, :zipcode, presence: true
+  validates :email, :password_digest, :session_token, :fname, :lname, :city, presence: true
   validates :email, uniqueness: { case_sensitive: false }
   validates :session_token, uniqueness: true
-  validates :zipcode, format: { with: /\d{5}/, message: "must be 5 digits" }
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token

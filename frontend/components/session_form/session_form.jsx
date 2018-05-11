@@ -10,7 +10,7 @@ class SessionForm extends React.Component {
       email: "",
       password: "",
       passwordConfirmation: "",
-      zipcode: ""
+      city: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
         email: "",
         password: "",
         passwordConfirmation: "",
-        zipcode: ""
+        city: ""
       });
     }
   }
@@ -68,9 +68,9 @@ class SessionForm extends React.Component {
     );
   }
 
-  passwordConfirmationAndZipcodeInput() {
+  passwordConfirmationAndCityInput() {
     if (this.props.formType === "login") return null;
-    const { passwordConfirmation, zipcode } = this.state;
+    const { passwordConfirmation, city } = this.state;
 
     return (
       [
@@ -79,10 +79,10 @@ class SessionForm extends React.Component {
           onChange={ this.updateField("passwordConfirmation") }
           className="session-form-input"
           placeholder="Confirm Password *"/>,
-        <input key="zipcode" type="text" value={ zipcode }
-          onChange={ this.updateField("zipcode") }
+        <input key="city" type="text" value={ city }
+          onChange={ this.updateField("city") }
           className="session-form-input"
-          placeholder="Enter Zipcode *"/>
+          placeholder="Enter City *"/>
       ]
     );
   }
@@ -172,7 +172,7 @@ class SessionForm extends React.Component {
           { this.nameInputs() }
           { this.emailInput() }
           { this.passwordInput() }
-          { this.passwordConfirmationAndZipcodeInput() }
+          { this.passwordConfirmationAndCityInput() }
           { this.submitButton() }
           { this.demoButton() }
         </form>
