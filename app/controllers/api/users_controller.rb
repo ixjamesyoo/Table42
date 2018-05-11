@@ -10,8 +10,12 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  # will need validation to ensure current_user matches params[:id]
+  # def show
+  # end
+
   private
   def user_params
-    params.require(:user).permit(:email, :password, :fname, :lname, :zipcode)
+    params.require(:user).permit(:email, :password, :fname, :lname, :city)
   end
 end
