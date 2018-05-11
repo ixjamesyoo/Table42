@@ -55,13 +55,13 @@ export const fetchRestaurant = id => dispatch => {
   });
 };
 
-export const fetchRestaurants = () => dispatch => {
-  return RestaurantAPIUtil.fetchRestaurants().then( restaurants => {
-    dispatch(receiveRestaurants(restaurants));
-  }, err => {
-    dispatch(receiveSearchErrors(err.responseJSON));
-  });
-};
+// export const fetchRestaurants = () => dispatch => {
+//   return RestaurantAPIUtil.fetchRestaurants().then( restaurants => {
+//     dispatch(receiveRestaurants(restaurants));
+//   }, err => {
+//     dispatch(receiveSearchErrors(err.responseJSON));
+//   });
+// };
 
 export const createRestaurant = restaurant => dispatch => {
   return RestaurantAPIUtil.createRestaurant(restaurant).then( newRestaurant => {

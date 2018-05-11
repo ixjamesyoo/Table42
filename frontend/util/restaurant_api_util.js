@@ -16,7 +16,7 @@ export const searchRestaurants = (query) => {
   return $.ajax({
     method: "GET",
     url: "/api/restaurants",
-    data: { query }
+    data: query 
   });
 };
 
