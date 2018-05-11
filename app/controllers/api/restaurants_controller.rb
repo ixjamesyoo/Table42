@@ -1,8 +1,18 @@
 class Api::RestaurantsController < ApplicationController
 
   def index
-    @restaurants = Restaurant.all
-    render :index
+    if params[:query]
+      @restaurants = Restaurant.search(params[:query])
+    else
+      base_zip = current_user ? current_user.zipcode : 10036
+      @restaurants = Restaurant.where(zipcode: base_zip)
+    end
+
+    if @restaurants.length > 0
+      render :index
+    else
+      render json: ["No matching restaurants found."], status: 404
+    end
   end
 
   def show
@@ -10,7 +20,7 @@ class Api::RestaurantsController < ApplicationController
     if @restaurant
       render :show
     else
-      render json: ["Restaurant not found."], status: 404
+      render json: ["Restaurant does not exist!"], status: 404
     end
   end
 
