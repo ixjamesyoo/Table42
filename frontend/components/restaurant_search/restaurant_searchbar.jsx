@@ -44,10 +44,10 @@ class SearchBar extends React.Component {
           <input className="restaurant-search-input"
             value={ query }
             onChange={ this.updateField("query") }
-            placeholder="Location, Restaurant, and/or Cuisine"></input>
+            placeholder="Search By Location, Restaurant, and/or Cuisine"></input>
           <button
             className="restaurant-search-submit"
-            ><img src={ window.images.searchGlass }/></button>
+            >Find a Table</button>
         </form>
       </div>
     );
