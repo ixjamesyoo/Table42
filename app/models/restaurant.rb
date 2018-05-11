@@ -19,6 +19,8 @@
 #
 
 class Restaurant < ApplicationRecord
+  include PgSearch
+
   validates :name, :address, :city, :state, :zipcode, :phone_number,
     :description, :price_range, :opening_time, :closing_time, :capacity,
     presence: true
@@ -32,6 +34,9 @@ class Restaurant < ApplicationRecord
 
   has_many :categorizations, dependent: :destroy
   has_many :cuisines, through: :categorizations
+
+  pg_search_scope :search_by_query, against: [:name, :city, :zipcode],
+    associated_against: { cuisines: :name }, using: :tsearch
 
   DINING_INTERVAL = 60
   CAPACITIES = [ 10, 20, 30, 40, 50, 75 ]
