@@ -3,9 +3,9 @@ class Api::RestaurantsController < ApplicationController
   def index
     if params[:query]
       city = current_user ? current_user.city : "New York City"
-      @restaurants = Restaurant.search_by_query(params[:query]).where(city: city)
-    else
-      @restaurants = Restaurant.where(city: city).limit(25)
+      @restaurants = Restaurant.search_by_query(params[:query]).where(city: city).limit(30)
+    elsif params[:city]
+      @restaurants = Restaurant.where(city: params[:city]).limit(30)
     end
 
     if @restaurants.length > 0

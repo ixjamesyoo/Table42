@@ -12,8 +12,12 @@ import SearchBar from "../restaurant_search/restaurant_searchbar_container";
 export default () => {
   return (
     <section className="home-page-container">
-      <h1>We out here boy!!! Homepage legit AFFF</h1>
-      <SearchBar/>
+      <div className="home-page-bg"><img
+        src={ window.images.homeBackground } className="home-page-bg-image" alt="table-42-bg"
+        /></div>
+      <ul className="home-page-components">
+        <SearchBar/>
+      </ul>
     </section>
   );
 };

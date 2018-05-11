@@ -37,11 +37,14 @@ class SearchBar extends React.Component {
 
     return (
       <div className="restaurant-search-container">
+        <div className="search-banner-container">
+          <h2 className="search-banner">Make restaurant reservations the easy way</h2>
+        </div>
         <form className="restaurant-search-bar" onSubmit={ this.handleSubmit }>
           <input className="restaurant-search-input"
             value={ query }
             onChange={ this.updateField("query") }
-            placeholder="Search by name, city, zip, cuisine"></input>
+            placeholder="Location, Restaurant, and/or Cuisine"></input>
           <button
             className="restaurant-search-submit"
             ><img src={ window.images.searchGlass }/></button>
