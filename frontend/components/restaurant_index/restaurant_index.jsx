@@ -28,10 +28,13 @@ export default class RestaurantIndex extends React.Component {
 
   displayRestaurants() {
     if (this.props.errors.length) return null;
-
+    const { restaurants } = this.props;
+    const indexItems = restaurants.restaurantIds.map( id => (
+      <RestaurantIndexItem key={ id } restaurant={ restaurants[id] } />
+    ));
     return (
       <div className="search-results-container">
-        You got some results!
+        { indexItems }
       </div>
     );
   }
