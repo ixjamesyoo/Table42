@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-
+import { parseText } from "./restaurant_search_helper";
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -12,11 +12,11 @@ class SearchBar extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const { history, loggedIn, currentUser } = this.props;
-    const parsedQuery = this.parseText(this.state.query);
+    const parsedQuery = parseText(this.state.query);
 
     if (parsedQuery === ""){
       const parsedCity = loggedIn ?
-        this.parseText(currentUser.city) : this.parseText("New York City");
+        parseText(currentUser.city) : parseText("New York City");
 
       history.push(`/restaurants/search?city=${parsedCity}`);
     } else {
@@ -24,23 +24,38 @@ class SearchBar extends React.Component {
     }
   }
 
-  parseText(text) {
-    return text.replace(/\s?[, ]\s?/g, "+");
-  }
-
   updateField(field) {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
 
+  searchBanner() {
+    if (this.props.location.pathname !== "/") {
+      return null;
+    }
+
+    return (
+      <div className="search-banner-container">
+        <h2 className="search-banner">Make restaurant reservations the easy way</h2>
+      </div>
+    );
+  }
+
+
   render() {
     const { query } = this.state;
 
+    const cssClassName = (cssClass) => {
+      return (
+        this.props.location.pathname === "/" ?
+          cssClass : cssClass + "-index-view"
+      );
+    };
+
+
     return (
-      <div className="restaurant-search-container">
-        <div className="search-banner-container">
-          <h2 className="search-banner">Make restaurant reservations the easy way</h2>
-        </div>
-        <form className="restaurant-search-bar" onSubmit={ this.handleSubmit }>
+      <div className={ cssClassName("restaurant-search-container") }>
+        { this.searchBanner() }
+        <form className={ cssClassName("restaurant-search-bar") } onSubmit={ this.handleSubmit }>
           <input className="restaurant-search-input"
             value={ query }
             onChange={ this.updateField("query") }

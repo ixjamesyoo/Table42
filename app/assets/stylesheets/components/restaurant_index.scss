@@ -1,0 +1,24 @@
+.restaurant-search-container-index-view {
+  background: #f7f7f7;
+  border: .5px solid #ccc;
+  width: 100%;
+  padding: 5px;
+}
+
+.restaurant-search-bar-index-view {
+  margin: auto;
+  width: 850px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+}
+
+.restaurant-search-bar-index-view > input {
+  background: white;
+  padding: 5px 15px;
+}
+
+.restaurant-search-bar-index-view > button {
+  height: 32px;
+}

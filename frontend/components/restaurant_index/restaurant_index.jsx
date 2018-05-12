@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { parseQuery } from "./restaurant_index_helper";
+import SearchBar from "../restaurant_search/restaurant_searchbar_container";
 
 export default class RestaurantIndex extends React.Component {
   componentDidMount() {
@@ -9,12 +10,16 @@ export default class RestaurantIndex extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // check ui slice of state then conditionally send ajax request
+    const queryString = (location) => location.search.slice(1);
 
-    // if ()
+    if (queryString(this.props.location) !== queryString(nextProps.location)){
+      this.props.searchRestaurants(parseQuery(queryString(nextProps.location)));
+    }
   }
 
   render(){
-    return null;
+    return (
+      <SearchBar />
+    );
   }
 }
