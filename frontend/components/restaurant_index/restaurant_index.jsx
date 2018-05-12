@@ -17,9 +17,32 @@ export default class RestaurantIndex extends React.Component {
     }
   }
 
+  displayErrors() {
+    if (!this.props.errors.length) return null;
+    return (
+      <div className="search-error-container">
+        <p className="search-error-text">{ this.props.errors[0] }</p>
+      </div>
+    );
+  }
+
+  displayRestaurants() {
+    if (this.props.errors.length) return null;
+
+    return (
+      <div className="search-results-container">
+        You got some results!
+      </div>
+    );
+  }
+
   render(){
     return (
-      <SearchBar />
+      <div className="index-page-container">
+        <SearchBar />
+        { this.displayErrors() }
+        { this.displayRestaurants() }
+      </div>
     );
   }
 }
