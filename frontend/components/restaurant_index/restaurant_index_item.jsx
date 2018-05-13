@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { dollarSigns } from "./restaurant_index_helper";
 
 const RestaurantIndexItem = ({ restaurant }) => {
   const cuisineText = restaurant.cuisines.join(" | ");
@@ -16,7 +17,7 @@ const RestaurantIndexItem = ({ restaurant }) => {
 
         <ul>
           <li className="restaurant-overview">{ cuisineText }</li>
-          <li>{ restaurant.price_range }</li>
+          <li>{ dollarSigns(restaurant.price_range) }</li>
           <li className="restaurant-overview">{ restaurant.address }</li>
           <li className="restaurant-blurb">{ restaurant.description }</li>
         </ul>

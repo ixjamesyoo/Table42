@@ -1,5 +1,7 @@
 .index-page-main {
+  margin: auto;
   padding: 30px 0px;
+  width: 1100px;
   display: flex;
   justify-content: space-around;
 }
@@ -34,14 +36,14 @@
 }
 
 .search-error-text {
-  padding-left: 100px;
+  padding-left: 150px;
   // margin: auto;
   // text-align: center;
   color: #c70002;
 }
 
 .search-results-container {
-  width: 850px;
+  width: 750px;
 }
 
 .search-result {
@@ -69,9 +71,21 @@
   line-height: 18px;
 }
 
+.restaurant-name:hover {
+  color: #1c657d;
+}
+
 .restaurant-overview {
   color: #666;
 }
+
+.light-dollar {
+  color: #ccc;
+}
+
+// .dollar {
+//   color: #666;
+// }
 
 .restaurant-blurb {
   font-size: 14px;
@@ -82,7 +96,7 @@
 .index-page-main > ul > li {
   border: 1px solid black;
   padding: 60px;
-  margin: 10px;
+  margin-bottom: 10px;
 }
 
 // this is somewhat similar to what i will eventually want
