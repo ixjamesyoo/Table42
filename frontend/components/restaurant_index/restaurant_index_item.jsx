@@ -14,19 +14,23 @@ const RestaurantIndexItem = ({ restaurant }) => {
         <Link to={ `/restaurants/${restaurant.id}` }><h3
           className="restaurant-name">{ restaurant.name }</h3></Link>
 
-        <ul className="restaurant-overview">
-          <li>Address: { restaurant.address }</li>
+        <ul>
+          <li className="restaurant-overview">{ cuisineText }</li>
           <li>{ restaurant.price_range }</li>
-          <li>{ cuisineText }</li>
+          <li className="restaurant-overview">{ restaurant.address }</li>
+          <li className="restaurant-blurb">{ restaurant.description }</li>
         </ul>
-        <p>{ restaurant.description }</p>
+
+        <section className="search-result-reservation-section">
+          <button className="navbar-button demo-button">BUTTON</button>
+          <button className="navbar-button demo-button">BUTTON</button>
+          <button className="navbar-button demo-button">BUTTON</button>
+          <button className="navbar-button demo-button">BUTTON</button>
+          <button className="navbar-button demo-button">BUTTON</button>
+          <button className="navbar-button demo-button">BUTTON</button>
+        </section>
       </section>
 
-      <section className="reservation-buttons-section">
-        <button className="navbar-button demo-button">BUTTON</button>
-        <button className="navbar-button demo-button">BUTTON</button>
-        <button className="navbar-button demo-button">BUTTON</button>
-      </section>
     </div>
   );
 };

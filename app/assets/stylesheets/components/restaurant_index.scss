@@ -41,13 +41,12 @@
 }
 
 .search-results-container {
-  width: 800px;
+  width: 850px;
 }
 
 .search-result {
   border-bottom: .5px solid #ccc;
-  padding-top: 15px;
-  // padding top should match the margin bottom on the reservations button section
+  padding: 15px 0;
 }
 
 .search-result:first-of-type {
@@ -55,26 +54,45 @@
 }
 
 .search-result-restaurant {
-  padding-left: 60px;
+  padding-left: 155px;
 }
 
 .restaurant-icon {
   float: left;
-  height: 100px;
-  width: 100px;
+  height: 140px;
+  width: 140px;
 }
 
+.restaurant-name {
+  color: #237b98;
+  font-size: 18px;
+  line-height: 18px;
+}
 
+.restaurant-overview {
+  color: #666;
+}
 
+.restaurant-blurb {
+  font-size: 14px;
+  color: #666;
+}
 
-
-.index-page-main >ul {
+// this is a complete dummy case for the coming filters
+.index-page-main > ul > li {
   border: 1px solid black;
+  padding: 60px;
+  margin: 10px;
 }
-.reservation-buttons-section {
-  margin: 15px 0;
+
+// this is somewhat similar to what i will eventually want
+.search-result-reservation-section {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 
   button {
-    margin-left: 40px;
+    margin: 0;
+    margin-right: 10px;
   }
 }
