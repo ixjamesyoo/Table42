@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { parseQuery } from "./restaurant_index_helper";
 import SearchBar from "../restaurant_search/restaurant_searchbar_container";
+import RestaurantIndexItem from "./restaurant_index_item";
 
 export default class RestaurantIndex extends React.Component {
   componentDidMount() {
@@ -21,14 +22,15 @@ export default class RestaurantIndex extends React.Component {
     if (!this.props.errors.length) return null;
     return (
       <div className="search-error-container">
-        <p className="search-error-text">{ this.props.errors[0] }</p>
+        <span className="search-error-text">{ this.props.errors[0] }</span>
       </div>
     );
   }
 
   displayRestaurants() {
-    if (this.props.errors.length) return null;
     const { restaurants } = this.props;
+    if (!restaurants.restaurantIds || this.props.errors.length) return null;
+
     const indexItems = restaurants.restaurantIds.map( id => (
       <RestaurantIndexItem key={ id } restaurant={ restaurants[id] } />
     ));
@@ -41,10 +43,19 @@ export default class RestaurantIndex extends React.Component {
 
   render(){
     return (
-      <div className="index-page-container">
+      <div>
         <SearchBar />
-        { this.displayErrors() }
-        { this.displayRestaurants() }
+        <main className="index-page-main">
+          
+          <ul>
+            <li>Some filter</li>
+            <li>Some other filter</li>
+            <li>ANOTHA ONE</li>
+          </ul>
+
+          { this.displayErrors() }
+          { this.displayRestaurants() }
+        </main>
       </div>
     );
   }
