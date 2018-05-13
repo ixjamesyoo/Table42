@@ -17,8 +17,8 @@ export default () => {
 
   const cityLis = cities.map( city => {
     return (
-      <Link to={ url(city) }>
-        <li key={ city } className={ "featured-city-item " + cityClass(city) }>
+      <Link to={ url(city) } key={ city } >
+        <li className={ "featured-city-item " + cityClass(city) }>
 
           <p className="featured-city-name">{ city }</p>
         </li>

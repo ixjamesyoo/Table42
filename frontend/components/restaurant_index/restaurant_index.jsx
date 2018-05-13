@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { parseQuery } from "./restaurant_index_helper";
 import SearchBar from "../restaurant_search/restaurant_searchbar_container";
 import RestaurantIndexItem from "./restaurant_index_item";
+import SearchFilter from "../search_filter/search_filter";
 
 export default class RestaurantIndex extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const queryString = this.props.location.search.slice(1);
     this.props.searchRestaurants(parseQuery(queryString));
   }
@@ -48,6 +51,7 @@ export default class RestaurantIndex extends React.Component {
         <div className="index-page-main">
 
           <ul>
+            <SearchFilter filterType="price_range" choicesArray={ ["$", "$$", "$$$", "$$$$"] }/>
             <li>Some filter</li>
             <li>Some other filter</li>
             <li>ANOTHA ONE</li>
