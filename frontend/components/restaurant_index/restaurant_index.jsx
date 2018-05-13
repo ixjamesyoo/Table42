@@ -43,10 +43,10 @@ export default class RestaurantIndex extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="main-page">
         <SearchBar />
         <main className="index-page-main">
-          
+
           <ul>
             <li>Some filter</li>
             <li>Some other filter</li>

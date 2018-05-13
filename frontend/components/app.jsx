@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { ProtectedRoute } from "../util/route_util";
 import Modal from "./modal/modal_container";
 import NavBar from "./navbar/navbar_container";
+import Footer from "./footer/footer";
 import HomePage from "./home_page/home_page";
 import RestaurantIndex from "./restaurant_index/restaurant_index_container";
 
@@ -26,6 +27,7 @@ const App = () => (
       <Route exact path="/" component={ HomePage }/>
       <Route path="/restaurants/search" component={ RestaurantIndex }/>
     </Switch>
+    <Footer />
   </div>
 );
 
