@@ -3,7 +3,7 @@
   <head>
     <title>Table42</title>
     <%= csrf_meta_tags %>
-    
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -24,6 +24,15 @@
         searchGlass: "<%= image_path("search_glass.png") %>",
         homeBackground: "<%= image_path("home_bg.jpg") %>",
         dummyPhoto: "<%= image_path("steakhouse.jpg") %>",
+        cities: {
+          "New York City": "<%= image_path("nyc.jpg") %>",
+          "Los Angeles": "<%= image_path("la.jpg") %>",
+          "San Francisco": "<%= image_path("sf.jpg") %>",
+          "Seattle": "<%= image_path("seattle.jpg") %>",
+          "Chicago": "<%= image_path("chicago.jpg") %>",
+          "Washington DC": "<%= image_path("dc.jpg") %>",
+        },
+
       }
     </script>
 

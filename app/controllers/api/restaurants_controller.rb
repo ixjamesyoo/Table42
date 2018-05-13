@@ -6,7 +6,7 @@ class Api::RestaurantsController < ApplicationController
       @restaurants = Restaurant.search_by_query(params[:query]).where(city: city).limit(30)
     elsif params[:city]
       city = params[:city].gsub(/\+/, " ")
-      @restaurants = Restaurant.where(city: city).limit(30)
+      @restaurants = Restaurant.where("city ILIKE ?", city).limit(30)
     end
 
     if @restaurants.length > 0

@@ -45,7 +45,7 @@ export default class RestaurantIndex extends React.Component {
     return (
       <div className="main-page">
         <SearchBar />
-        <main className="index-page-main">
+        <div className="index-page-main">
 
           <ul>
             <li>Some filter</li>
@@ -55,7 +55,7 @@ export default class RestaurantIndex extends React.Component {
 
           { this.displayErrors() }
           { this.displayRestaurants() }
-        </main>
+        </div>
       </div>
     );
   }

@@ -15,7 +15,7 @@
 }
 
 .restaurant-search-container {
-  background: #f7f7f7;
+  background: #fff;
   margin: auto;
   width: 850px;
   display: flex;
@@ -24,7 +24,7 @@
   justify-content: center;
   border-radius: 5px;
   padding: 20px;
-  box-shadow: 0 2px 1px -1px gray;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2);
 }
 
 .search-banner-container {
@@ -105,6 +105,8 @@
   align-items: center;
 
   p {
+    font-size: 15px;
+    line-height: 22px;
     color: #acacac;
   }
 }
