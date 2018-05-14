@@ -1,3 +1,11 @@
+.show-loading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+}
+
 .show-page-master {
   background: #f2f2f2;
 }
@@ -14,8 +22,8 @@
 .show-page-main {
   position: relative;
   // min-height: 600px;
-  top: -300px;
-  width: 750px;
+  top: -120px;
+  width: 700px;
   margin-left: 100px;
   background: #fff;
   border-radius: 5px;
@@ -35,12 +43,26 @@
 }
 
 .show-details {
+  width: 520px;
+  margin: auto;
   font-size: 18px;
-  padding: 30px 50px;
+  padding-top: 20px;
   display: flex;
   justify-content: space-between;
+
+  li {
+    color: #666;
+    margin-bottom: 2px;
+  }
 }
 
 .review-details {
   text-align: right;
+}
+
+.show-blurb {
+  // text-align: center;
+  color: #666;
+  width: 520px;
+  margin: 20px auto;
 }

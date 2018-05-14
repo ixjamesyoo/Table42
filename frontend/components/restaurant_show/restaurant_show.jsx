@@ -5,6 +5,7 @@ import { dollarSigns } from "../restaurant_index/restaurant_index_helper";
 class RestaurantShow extends React.Component {
   componentDidMount(){
     this.props.fetchRestaurant();
+    window.scrollTo(0,0);
   }
 
   mainContent(){
@@ -21,8 +22,8 @@ class RestaurantShow extends React.Component {
               <li>{ dollarSigns(restaurant.price_range) }</li><br/>
               <li>Address: { restaurant.address }</li>
               <li>Phone: { restaurant.phone_number }</li>
-              <li>Opening: { restaurant.opening_time }</li>
-              <li>Closing: { restaurant.closing_time }</li>
+              <li>Opens at { restaurant.opening_time }</li>
+              <li>Closes at { restaurant.closing_time }</li>
             </ul>
 
             <ul className="review-details">
@@ -30,7 +31,6 @@ class RestaurantShow extends React.Component {
               <li>Food: 5</li>
               <li>Value: 4</li>
               <li>Service: 4</li>
-              <li>Noise: 3</li>
               <li>Ambience: 5</li>
             </ul>
           </div>
@@ -45,7 +45,11 @@ class RestaurantShow extends React.Component {
 
   render() {
     const { restaurant, errors, loading } = this.props;
-    if (loading) return <LoadingSpinner/>;
+    if (loading) return (
+      <div class="show-loading">
+        <LoadingSpinner/>
+      </div>
+    );
     if (!restaurant || !restaurant.fetched) return null;
 
     return (
