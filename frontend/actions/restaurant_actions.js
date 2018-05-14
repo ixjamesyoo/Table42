@@ -5,12 +5,21 @@ export const RECEIVE_RESTAURANTS = "RECEIVE_RESTAURANTS";
 export const RECEIVE_RESTAURANT_ERRORS = "RECEIVE_RESTAURANT_ERRORS";
 export const RECEIVE_SEARCH_ERRORS = "RECEIVE_SEARCH_ERRORS";
 export const CLEAR_SEARCH_ERRORS = "CLEAR_SEARCH_ERRORS";
+export const LOADING_RESTAURANT = "LOADING_RESTAURANT";
+export const LOADING_RESTAURANTS = "LOADING_RESTAURANTS";
 
 // WILL NEED:
 // 1. UPDATE/DESTROY RESTAURANTS, removeRestaurant (from redux state)
 // 2.POSSIBLY GET RID OF fetchRestaurants ( will always need to search by something right?)
 // 3. UPDATE receiveRestaurant/receiveRestaurants, along with reducers once reviews, etc implemented
 // will receive payload information instead of just restaurant
+export const loadingRestaurant = () => ({
+  type: LOADING_RESTAURANT
+});
+
+export const loadingRestaurants = () => ({
+  type: LOADING_RESTAURANTS
+});
 
 export const receiveRestaurant = ({ restaurant }) => {
   return ({
@@ -43,15 +52,17 @@ export const receiveSearchErrors = errors => {
 };
 
 export const clearSearchErrors = () => {
-  return ({type: CLEAR_SEARCH_ERRORS,
+  return ({
+    type: CLEAR_SEARCH_ERRORS,
   });
 };
 
 export const fetchRestaurant = id => dispatch => {
+  dispatch(loadingRestaurant());
   return RestaurantAPIUtil.fetchRestaurant(id).then( payload => {
     dispatch(receiveRestaurant(payload));
   }, err => {
-    dispatch(receiveSearchErrors(err.responseJSON));
+    dispatch(receiveRestaurantErrors(err.responseJSON));
   });
 };
 
@@ -72,6 +83,7 @@ export const createRestaurant = restaurant => dispatch => {
 };
 
 export const searchRestaurants = query => dispatch => {
+  dispatch(loadingRestaurants());
   return RestaurantAPIUtil.searchRestaurants(query).then( restaurants => {
     dispatch(receiveRestaurants(restaurants));
   }, err => {
