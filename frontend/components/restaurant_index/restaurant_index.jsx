@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { parseQuery, PRICE_OPTIONS, CUISINE_OPTIONS } from "./restaurant_index_helper";
+import {
+  parseQuery,
+  parseHash,
+  PRICE_OPTIONS,
+  CUISINE_OPTIONS
+} from "./restaurant_index_helper";
 import SearchBar from "../restaurant_search/restaurant_searchbar_container";
 import RestaurantIndexItem from "./restaurant_index_item";
 import SearchFilter from "../search_filter/search_filter";
@@ -33,23 +38,42 @@ export default class RestaurantIndex extends React.Component {
   displayRestaurants() {
     const { restaurants, location } = this.props;
     if (!restaurants.restaurantIds || this.props.errors.length) return null;
-    let indexItems;
 
+    let indexItems = [];
     if (location.hash) {
-      
+      const filterParams = parseHash(location.hash.slice(1));
+      const restIds = restaurants.restaurantIds;
 
+      for (let i = 0; i < restIds.length; i++) {
+        const thisRest = restaurants[restIds[i]];
+        let willRender = true;
+        for (let j = 0; j < filterParams.length; j++) {
+          const param = filterParams[j];
+          const paramCategory = param[0];
+          const paramChoices = param[1];
 
+          if (Array.isArray(thisRest[paramCategory])) {
+            willRender = thisRest[paramCategory].some(el => paramChoices.includes(el));
+            if (!willRender) break;
+          } else {
+            willRender = paramChoices.includes(thisRest[paramCategory]);
+            if (!willRender) break;
+          }
+        }
+        if (!willRender) continue;
+        indexItems.push((<RestaurantIndexItem key={ thisRest.id } restaurant={ thisRest } />));
+      }
     } else {
       indexItems = restaurants.restaurantIds.map( id => (
         <RestaurantIndexItem key={ id } restaurant={ restaurants[id] } />
       ));
-
-      return (
-        <div className="search-results-container">
-          { indexItems }
-        </div>
-      );
     }
+
+    return (
+      <div className="search-results-container">
+        { indexItems }
+      </div>
+    );
   }
 
   render(){

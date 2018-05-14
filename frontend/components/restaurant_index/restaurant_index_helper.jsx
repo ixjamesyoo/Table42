@@ -15,6 +15,30 @@ export const CUISINE_OPTIONS = [
 // "Steakhouse",
 // "Spanish"
 
+const categoryHash = {
+  "price_range": [1,2,3,4],
+  "cuisines": CUISINE_OPTIONS
+};
+
+const mapChoiceToText = (choiceOption, category) => {
+  const idx = parseInt(choiceOption) - 1;
+  return categoryHash[category][idx];
+};
+
+export const parseHash = (string) => {
+  const hashSets = string.split("&");
+
+  let result = [];
+  hashSets.forEach( set => {
+    set = set.split("=");
+    result.push([
+      set[0],
+      set[1].split("+").map(choiceOption => mapChoiceToText(choiceOption, set[0]))
+    ]);
+  });
+  return result;
+};
+
 export const parseQuery = (string) => {
   const queryPairs = string.split("&");
 
