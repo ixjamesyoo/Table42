@@ -42,13 +42,16 @@ class SearchFilter extends React.Component {
     const { choicesArray } = this.props;
     const filterInputs = choicesArray.map((choice) => {
       return (
-        <label className="choice-label" key={ choice }>{ choice }
-          <input type="checkbox"
-            value={ choice }
-            checked={ this.state[choice] }
-            onChange={ this.handleChange }
-            />
-        </label>
+        <div className="choice-div" key={ choice }>
+          <label className="choice-label" >
+            <input type="checkbox"
+              value={ choice }
+              checked={ this.state[choice] }
+              onChange={ this.handleChange }
+              />
+            <span>{ choice }</span>
+          </label>
+        </div>
       );
     });
 

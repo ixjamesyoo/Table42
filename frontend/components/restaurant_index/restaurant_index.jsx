@@ -36,7 +36,7 @@ export default class RestaurantIndex extends React.Component {
   }
 
   displayRestaurants() {
-    const { restaurants, location } = this.props;
+    const { restaurants, location, receiveSearchErrors, clearSearchErrors } = this.props;
     if (!restaurants.restaurantIds || this.props.errors.length) return null;
 
     let indexItems = [];
@@ -63,6 +63,9 @@ export default class RestaurantIndex extends React.Component {
         if (!willRender) continue;
         indexItems.push((<RestaurantIndexItem key={ thisRest.id } restaurant={ thisRest } />));
       }
+
+
+
     } else {
       indexItems = restaurants.restaurantIds.map( id => (
         <RestaurantIndexItem key={ id } restaurant={ restaurants[id] } />
@@ -82,16 +85,15 @@ export default class RestaurantIndex extends React.Component {
         <SearchBar />
         <div className="index-page-main">
 
-          <ul>
+          <ul className="filter-list">
             <div className="price-filter-container">
+              <h3 className="filter-header">Price Range</h3>
               <SearchFilter filterType="price_range" choicesArray={ PRICE_OPTIONS }/>
             </div>
             <div className="cuisine-filter-container">
+              <h3 className="filter-header">Cuisine</h3>
               <SearchFilter filterType="cuisines" choicesArray={ CUISINE_OPTIONS }/>
             </div>
-            <li>Some filter</li>
-            <li>Some other filter</li>
-            <li>ANOTHA ONE</li>
           </ul>
 
           { this.displayErrors() }

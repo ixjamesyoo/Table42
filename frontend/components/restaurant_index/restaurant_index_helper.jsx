@@ -5,15 +5,15 @@ export const CUISINE_OPTIONS = [
   "American",
   "Asian",
   "Chinese",
+  "French",
+  "Indian",
+  "Italian",
+  "Mediterranean",
+  "Seafood",
+  "Sushi",
+  "Steakhouse",
+  "Spanish"
 ];
-// "French",
-// "Indian",
-// "Italian",
-// "Mediterranean",
-// "Seafood",
-// "Sushi",
-// "Steakhouse",
-// "Spanish"
 
 const categoryHash = {
   "price_range": [1,2,3,4],
