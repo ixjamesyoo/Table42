@@ -6,6 +6,7 @@ import NavBar from "./navbar/navbar_container";
 import Footer from "./footer/footer";
 import HomePage from "./home_page/home_page";
 import RestaurantIndex from "./restaurant_index/restaurant_index_container";
+import RestaurantShow from "./restaurant_show/restaurant_show_container";
 
 
 // complete homepage
@@ -16,8 +17,8 @@ import RestaurantIndex from "./restaurant_index/restaurant_index_container";
 // my/profile/reviews  my/profile/reservations
 
 
-
 // <Route path="/restaurants/:id" component={ RestaurantShow }/>
+
 
 const App = () => (
   <div>
