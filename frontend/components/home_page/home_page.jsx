@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../restaurant_search/restaurant_searchbar_container";
+import FeaturedCities from "./featured/featured_cities";
 
 // will need a search bar component, top cuisines, featured cities
 
@@ -17,6 +18,7 @@ export default () => {
         /></div>
       <ul className="home-page-components">
         <SearchBar/>
+        <FeaturedCities/>
       </ul>
     </section>
   );

@@ -1,0 +1,96 @@
+.featured-city-container {
+  position: relative;
+  margin: 20px auto;
+  width: 900px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.2);
+  // box-shadow: 0 2px 1px -1px rgba(0,0,0,.2);
+  border-radius: 5px;
+  background: #fff;
+}
+
+.featured-city-header {
+  margin: auto;
+  width: 90%;
+  padding: 20px 0;
+}
+
+.featured-city-header-text {
+  font-size: 25px;
+  font-weight: 550;
+  border-bottom: 1px solid #ccc;
+  padding: 0 0 10px 25px;
+}
+
+.featured-city-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 50px;
+}
+
+.featured-city-list::after {
+  content: "";
+  display: block;
+  width: 90%;
+  margin: auto;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+// .new-york-city {
+//   background: image-url('nyc.jpg');
+// }
+//
+// .los-angeles {
+//   background: image-url('la.jpg');
+// }
+//
+// .san-francisco {
+//   background: image-url('sf.jpg');
+// }
+//
+// .seattle {
+//   background: image-url('seattle.jpg');
+// }
+//
+// .chicago {
+//   background: image-url('chicago.jpg');
+// }
+//
+// .washington-dc {
+//   background: image-url('dc.jpg')
+// }
+
+
+.featured-city-item {
+  width: 300px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.featured-city-name {
+  font-size: 22px;
+  margin: auto;
+  color: white;
+  text-shadow: 1px 1px 0px #000;
+  font-weight: 500;
+  z-index: 5;
+}
+
+
+.featured-city-photos-item {
+  width: 300px;
+  height:150px;
+  opacity: 0.9;
+}
+
+.position-relative-parent {
+  position: relative;
+}
+
+.position-absolute-child {
+  position: absolute;
+  top: 0;
+}

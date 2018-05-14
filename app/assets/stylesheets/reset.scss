@@ -29,6 +29,7 @@ img {
   height: auto;
 }
 
+
 input[type="password"],
 input[type="email"],
 input[type="text"],
@@ -43,4 +44,14 @@ button {
 button,
 input[type="submit"] {
   cursor: pointer;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#root {
+  background: #f7f7f7;
 }

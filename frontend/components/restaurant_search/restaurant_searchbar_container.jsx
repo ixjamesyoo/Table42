@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { receiveSearchErrors, clearSearchErrors } from "../../actions/restaurant_actions";
 import SearchBar from "./restaurant_searchbar";
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,11 +11,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    receiveSearchErrors: (errors) => dispatch(receiveSearchErrors(errors)),
-    clearSearchErrors: () => dispatch(clearSearchErrors())
-  };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar));
+export default withRouter(connect(mapStateToProps)(SearchBar));

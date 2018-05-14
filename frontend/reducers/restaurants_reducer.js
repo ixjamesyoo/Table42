@@ -7,7 +7,7 @@ export default (state = {}, action) => {
     case RECEIVE_RESTAURANT:
       return merge({}, state, { [action.restaurant.id]: action.restaurant });
     case RECEIVE_RESTAURANTS:
-      return merge({}, state, action.restaurants);
+      return action.restaurants;
     default:
       return state;
   }

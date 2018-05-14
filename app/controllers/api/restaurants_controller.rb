@@ -3,9 +3,12 @@ class Api::RestaurantsController < ApplicationController
   def index
     if params[:query]
       city = current_user ? current_user.city : "New York City"
-      @restaurants = Restaurant.search_by_query(params[:query]).where(city: city).limit(30)
+      @restaurants = Restaurant.search_by_query(params[:query]).where(city: city)
+        .includes(:cuisines).order(:name)
     elsif params[:city]
-      @restaurants = Restaurant.where(city: params[:city]).limit(30)
+      city = params[:city].gsub(/\+/, " ")
+      @restaurants = Restaurant.where("city ILIKE ?", city)
+        .includes(:cuisines).order(:name)
     end
 
     if @restaurants.length > 0
@@ -16,7 +19,7 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find_by(params[:id])
+    @restaurant = Restaurant.includes(:cuisines).find_by(id: params[:id])
     if @restaurant
       render :show
     else

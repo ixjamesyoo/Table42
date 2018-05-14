@@ -1,0 +1,62 @@
+.filter-list {
+  width: 240px;
+}
+
+.filter-list > div {
+  // border: 1px solid gold;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding-top: 12px;
+  // border-top: .5px solid #ccc;
+}
+
+.filter-header {
+  color: #237b98;
+  font-size: 19px;
+  font-weight: 550;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 180px;
+  margin: auto;
+  border-bottom: .5px solid #ccc;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  margin-top: 10px;
+}
+
+.choice-label {
+  padding: 2px 0;
+  vertical-align: bottom;
+}
+
+.choice-div {
+  height: 23px;
+  margin-bottom: 2px;
+}
+
+.choice-div label {
+  display: block;
+  float: left;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+.choice-div input {
+  margin-right: 7px;
+  vertical-align: middle;
+}
+.choice-div label span {
+  vertical-align: middle;
+}
+
+.price-filter-container, .cuisine-filter-container {
+  background: #f2f2f2;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  border: 1px solid rgba(0,0,0,.12);
+
+}
