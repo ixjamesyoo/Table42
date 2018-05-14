@@ -9,7 +9,7 @@ import {
 import SearchBar from "../restaurant_search/restaurant_searchbar_container";
 import RestaurantIndexItem from "./restaurant_index_item";
 import SearchFilter from "../search_filter/search_filter";
-import IndexLoadingIcon from "./index_loading_icon";
+import LoadingSpinner from "../loading_spinner/loading_spinner";
 
 export default class RestaurantIndex extends React.Component {
   componentDidMount() {
@@ -39,7 +39,7 @@ export default class RestaurantIndex extends React.Component {
   displayRestaurants() {
     const { restaurants, location, loading } = this.props;
 
-    if (loading) return <IndexLoadingIcon/>;
+    if (loading) return <LoadingSpinner/>;
     if (!restaurants.restaurantIds || this.props.errors.length) return null;
 
     let indexItems = [];

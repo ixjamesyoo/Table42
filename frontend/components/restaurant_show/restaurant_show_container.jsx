@@ -5,7 +5,9 @@ import RestaurantShow from "./restaurant_show";
 
 const mapStateToProps = (state, { match }) => {
   return ({
-    restaurant: state.entities.restaurants[match.params.id]
+    restaurant: state.entities.restaurants[match.params.id],
+    errors: state.errors.restaurant,
+    loading: state.ui.loading.showLoading
   });
 };
 

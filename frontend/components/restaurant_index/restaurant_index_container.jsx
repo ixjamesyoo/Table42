@@ -14,7 +14,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     searchRestaurants: (query) => dispatch(searchRestaurants(query)),
-    loadingRestaurants: () => dispatch(loadingRestaurants())
   });
 };
 
