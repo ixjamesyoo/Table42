@@ -76,7 +76,7 @@ class Restaurant < ApplicationRecord
     time = arg_time.to_s[11..18]
     first_two = time[0..1]
     if first_two.to_i > 12
-      time = "0" + (first_two.to_i - 12).to_s + time[2...-3] + " PM"
+      time = (first_two.to_i - 12).to_s + time[2...-3] + " PM"
     else
       time = time[0...-3] + " AM"
     end
