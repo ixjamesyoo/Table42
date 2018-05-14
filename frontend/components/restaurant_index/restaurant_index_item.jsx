@@ -5,11 +5,12 @@ import { dollarSigns } from "./restaurant_index_helper";
 const RestaurantIndexItem = ({ restaurant }) => {
   const cuisineText = restaurant.cuisines.join(" | ");
 
+  const photoName = restaurant.cuisines[0];
   return (
     <div className="search-result">
       <Link to={ `/restaurants/${restaurant.id}` }><img
         className="restaurant-icon clearfix"
-        src={ window.images.dummyPhoto }/></Link>
+        src={ window.images.stockPhotos[photoName]}/></Link>
 
       <section className="search-result-restaurant">
         <Link to={ `/restaurants/${restaurant.id}` }><h3
