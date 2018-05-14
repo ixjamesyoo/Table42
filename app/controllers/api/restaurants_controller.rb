@@ -19,7 +19,7 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find_by(params[:id])
+    @restaurant = Restaurant.includes(:cuisines).find_by(id: params[:id])
     if @restaurant
       render :show
     else

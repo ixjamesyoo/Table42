@@ -17,7 +17,6 @@ import RestaurantShow from "./restaurant_show/restaurant_show_container";
 // my/profile/reviews  my/profile/reservations
 
 
-// <Route path="/restaurants/:id" component={ RestaurantShow }/>
 
 
 const App = () => (
@@ -27,6 +26,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={ HomePage }/>
       <Route path="/restaurants/search" component={ RestaurantIndex }/>
+      <Route path="/restaurants/:id" component={ RestaurantShow }/>
     </Switch>
     <Footer />
   </div>
