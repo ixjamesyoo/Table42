@@ -1,5 +1,20 @@
 import React from "react";
 
+export const PRICE_OPTIONS = ["$", "$$", "$$$", "$$$$"];
+export const CUISINE_OPTIONS = [
+  "American",
+  "Asian",
+  "Chinese",
+];
+// "French",
+// "Indian",
+// "Italian",
+// "Mediterranean",
+// "Seafood",
+// "Sushi",
+// "Steakhouse",
+// "Spanish"
+
 export const parseQuery = (string) => {
   const queryPairs = string.split("&");
 

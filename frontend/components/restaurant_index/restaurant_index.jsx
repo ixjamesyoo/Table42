@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { parseQuery } from "./restaurant_index_helper";
+import { parseQuery, PRICE_OPTIONS, CUISINE_OPTIONS } from "./restaurant_index_helper";
 import SearchBar from "../restaurant_search/restaurant_searchbar_container";
 import RestaurantIndexItem from "./restaurant_index_item";
 import SearchFilter from "../search_filter/search_filter";
@@ -31,17 +31,25 @@ export default class RestaurantIndex extends React.Component {
   }
 
   displayRestaurants() {
-    const { restaurants } = this.props;
+    const { restaurants, location } = this.props;
     if (!restaurants.restaurantIds || this.props.errors.length) return null;
+    let indexItems;
 
-    const indexItems = restaurants.restaurantIds.map( id => (
-      <RestaurantIndexItem key={ id } restaurant={ restaurants[id] } />
-    ));
-    return (
-      <div className="search-results-container">
-        { indexItems }
-      </div>
-    );
+    if (location.hash) {
+      
+
+
+    } else {
+      indexItems = restaurants.restaurantIds.map( id => (
+        <RestaurantIndexItem key={ id } restaurant={ restaurants[id] } />
+      ));
+
+      return (
+        <div className="search-results-container">
+          { indexItems }
+        </div>
+      );
+    }
   }
 
   render(){
@@ -51,7 +59,12 @@ export default class RestaurantIndex extends React.Component {
         <div className="index-page-main">
 
           <ul>
-            <SearchFilter filterType="price_range" choicesArray={ ["$", "$$", "$$$", "$$$$"] }/>
+            <div className="price-filter-container">
+              <SearchFilter filterType="price_range" choicesArray={ PRICE_OPTIONS }/>
+            </div>
+            <div className="cuisine-filter-container">
+              <SearchFilter filterType="cuisines" choicesArray={ CUISINE_OPTIONS }/>
+            </div>
             <li>Some filter</li>
             <li>Some other filter</li>
             <li>ANOTHA ONE</li>
