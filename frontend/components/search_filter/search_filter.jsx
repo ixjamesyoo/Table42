@@ -23,6 +23,18 @@ class SearchFilter extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { location, filterType, choicesArray } = this.props;
+
+    if (location.hash !== nextProps.location.hash) {
+      const relevantSubstring = relevantHashSubstring(nextProps.location.hash, filterType);
+      const checkedInputs = parseSelections(relevantSubstring);
+      const newStatuses = optionCheckedStatus(choicesArray, checkedInputs);
+      const newState = merge({ checkedInputs }, newStatuses);
+      this.setState(newState);
+    }
+  }
+
   handleChange(e) {
     // console.log(e.currentTarget);
     const { location, filterType, history, choicesArray } = this.props;

@@ -3,8 +3,8 @@ class Api::RestaurantsController < ApplicationController
   def index
     if params[:query]
       city = current_user ? current_user.city : "New York City"
-      @restaurants = Restaurant.search_by_query(params[:query]).where(city: city).includes(:cuisines)
-        .order(:name)
+      @restaurants = Restaurant.search_by_query(params[:query]).where(city: city)
+        .includes(:cuisines).order(:name)
     elsif params[:city]
       city = params[:city].gsub(/\+/, " ")
       @restaurants = Restaurant.where("city ILIKE ?", city)

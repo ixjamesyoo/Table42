@@ -64,19 +64,22 @@ export default class RestaurantIndex extends React.Component {
         indexItems.push((<RestaurantIndexItem key={ thisRest.id } restaurant={ thisRest } />));
       }
 
-
-
     } else {
       indexItems = restaurants.restaurantIds.map( id => (
         <RestaurantIndexItem key={ id } restaurant={ restaurants[id] } />
       ));
     }
 
-    return (
-      <div className="search-results-container">
-        { indexItems }
-      </div>
-    );
+    return indexItems.length ?
+      (
+        <div className="search-results-container">
+          { indexItems }
+        </div>
+      ) : (
+        <div className="search-error-container">
+          <span className="search-error-text">No matching restaurants found.</span>
+        </div>
+      );
   }
 
   render(){
