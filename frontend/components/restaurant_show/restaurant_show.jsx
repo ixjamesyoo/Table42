@@ -46,7 +46,7 @@ class RestaurantShow extends React.Component {
   render() {
     const { restaurant, errors, loading } = this.props;
     if (loading) return (
-      <div class="show-loading">
+      <div className="show-loading">
         <LoadingSpinner/>
       </div>
     );
