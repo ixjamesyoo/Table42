@@ -12,5 +12,7 @@ export default (state = {}, action) => {
       return newState;
     default:
       return state;
+
+    // WHEN CREATING PROFILE PAGE NEED ACTION THAT WILL REPLACE STATE ENTIRELY WITH RESERVATIONS
   }
 };
