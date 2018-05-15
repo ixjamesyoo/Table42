@@ -10,11 +10,15 @@
 #
 class Reservation < ApplicationRecord
   validates :user_id, :restaurant_id, :table_size,
-    :start_datetime, :table_size, null: false
+    :start_datetime, :end_datetime, :table_size, null: false
   validates :table_size, inclusion: { in: 1..20 }
   validate :upcoming_reservation
   validate :between_store_hours
+  validate :will_not_exceed_restaurant_capacity
 
+  # validates :user_id, uniqueness: { scope: :start_datetime }
+
+  before_validation :include_end_datetime
   before_validation :strip_timezone
 
   belongs_to :user
@@ -41,14 +45,44 @@ class Reservation < ApplicationRecord
     end
   end
 
+  def include_end_datetime
+    self.end_datetime = self.start_datetime + 1.hour
+  end
+
   def will_not_exceed_restaurant_capacity
-    competing_reservations = Reservation.where(
-      "start_datetime BETWEEN ? AND ?", start_datetime - 59.minutes, start_datetime + 59.minutes
-    ).where("restaurant_id = ?", restaurant_id)
 
-    competing_reservations.any? ? true : false
-    # res = self.restaurant
-    # if res.reservations.find_by
+    4.times do |i|
+      interval = i * 15.minutes
+      param1 = self.start_datetime + interval
+      param2 = param1 - 1.hour
 
+      query = ActiveRecord::Base.send(:sanitize_sql_array, [<<-SQL, param1, param2])
+        SELECT SUM(reservations.table_size) AS diners
+        FROM reservations
+        JOIN restaurants ON restaurants.id = reservations.restaurant_id
+        WHERE reservations.end_datetime > ?
+        AND reservations.start_datetime > ?
+      SQL
+
+      present_diners = ActiveRecord::Base.connection.execute(query).values[0][0] || 0
+
+      debugger
+      if present_diners + self.table_size > self.restaurant.capacity
+        errors[:restaurant] << "is at capacity during that time."
+        return
+      end
+    end
   end
 end
+
+# query = ActiveRecord::Base.send(:sanitize_sql_array, [<<-SQL, self.start_datetime, self.end_datetime])
+#   SELECT reservations1.start_datetime, SUM(reservations2.table_size) AS diners
+#   FROM reservations AS reservations1
+#   JOIN restaurants ON restaurants.id = reservations1.restaurant_id
+#   JOIN reservations AS reservations2 ON restaurants.id = reservations2.restaurant_id
+#   WHERE reservations1.start_datetime >= ?
+#     AND reservations1.start_datetime <= ?
+#     AND reservations2.start_datetime >= (reservations1.start_datetime - INTERVAL '59 minutes')
+#     AND reservations2.start_datetime <= (reservations1.start_datetime)
+#   GROUP BY reservations1.start_datetime
+# SQL
