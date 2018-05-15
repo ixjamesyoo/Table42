@@ -10,16 +10,16 @@
 #
 class Reservation < ApplicationRecord
   validates :user_id, :restaurant_id, :table_size,
-    :start_datetime, :end_datetime, :table_size, null: false
+    :start_datetime, :end_datetime, null: false
   validates :table_size, inclusion: { in: 1..20 }
+
   validate :upcoming_reservation
   validate :between_store_hours
   validate :will_not_exceed_restaurant_capacity
+  validate :no_user_overlap
 
-  # validates :user_id, uniqueness: { scope: :start_datetime }
-
-  before_validation :include_end_datetime
   before_validation :strip_timezone
+  before_validation :include_end_datetime
 
   belongs_to :user
   belongs_to :restaurant
@@ -66,13 +66,23 @@ class Reservation < ApplicationRecord
 
       present_diners = ActiveRecord::Base.connection.execute(query).values[0][0] || 0
 
-      debugger
       if present_diners + self.table_size > self.restaurant.capacity
-        errors[:restaurant] << "is at capacity during that time."
+        errors[:restaurant] << "is at capacity during that time"
         return
       end
     end
   end
+
+  def no_user_overlap
+    param1 = self.start_datetime - 1.hour
+    param2 = self.end_datetime + 1.hour
+
+    if Reservation.where("start_datetime > ? AND end_datetime < ?", param1, param2)
+      .where("user_id = ?", user_id).exists?
+      errors[:user] << "cannot have conflicting reservations"
+    end
+  end
+
 end
 
 # query = ActiveRecord::Base.send(:sanitize_sql_array, [<<-SQL, self.start_datetime, self.end_datetime])
