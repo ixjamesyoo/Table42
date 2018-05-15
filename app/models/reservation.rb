@@ -26,8 +26,12 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
 
+  def parsed_start_datetime
+    start_datetime.strftime("%A, %b %-d at %-l:%M %P")
+  end
+
   def strip_timezone
-    self.start_datetime.change(offset: "+0000")
+    start_datetime.change(offset: "+0000")
   end
 
   def upcoming_reservation

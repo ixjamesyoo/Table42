@@ -2,12 +2,6 @@ class Api::ReservationsController < ApplicationController
   before_action :require_login
   before_action :ensure_current_user_is_authorized, only: :destroy
 
-  def index
-  end
-
-  def show
-  end
-
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
@@ -26,7 +20,7 @@ class Api::ReservationsController < ApplicationController
       render :show
     else
       render json: @reservation.errors.full_messages, status: 422
-    end 
+    end
   end
 
   private
