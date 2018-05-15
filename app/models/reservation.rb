@@ -7,7 +7,9 @@
 #  restaurant_id  :integer          not null
 #  start_datetime :datetime         not null
 #  table_size     :integer          not null
+#  end_datetime   :datetime
 #
+
 class Reservation < ApplicationRecord
   validates :user_id, :restaurant_id, :table_size,
     :start_datetime, :end_datetime, null: false
