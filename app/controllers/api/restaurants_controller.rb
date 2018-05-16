@@ -36,19 +36,6 @@ class Api::RestaurantsController < ApplicationController
     end
   end
 
-  def update
-    @restaurant = Restaurant.find_by(params[:id])
-
-    if @restaurant.update(restaurant_params)
-      render :show
-    else
-      render json: @restaurant.errors.full_messages, status: 422
-    end
-  end
-
-  def destroy
-  end
-
   private
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :city, :state,

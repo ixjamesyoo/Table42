@@ -35,6 +35,7 @@ class Restaurant < ApplicationRecord
   has_many :categorizations, dependent: :destroy
   has_many :cuisines, through: :categorizations
   has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   pg_search_scope :search_by_query,
     against: [:name, :address, :city, :zipcode],

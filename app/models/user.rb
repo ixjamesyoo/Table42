@@ -23,6 +23,7 @@ class User < ApplicationRecord
   attr_reader :password
 
   has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   def password=(pw)
     @password = pw

@@ -25,10 +25,10 @@ class Review < ApplicationRecord
 
   after_initialize :no_free_recommendations
 
+  belongs_to :user
+  belongs_to :restaurant
+
   def no_free_recommendations
     self.recommended? ||= false
   end
-
-
-
 end
