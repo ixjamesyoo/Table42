@@ -7,7 +7,7 @@
 #  restaurant_id  :integer          not null
 #  start_datetime :datetime         not null
 #  table_size     :integer          not null
-#  end_datetime   :datetime
+#  end_datetime   :datetime         not null
 #
 
 class Reservation < ApplicationRecord

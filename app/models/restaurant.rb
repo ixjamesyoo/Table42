@@ -37,7 +37,7 @@ class Restaurant < ApplicationRecord
   has_many :reservations, dependent: :destroy
 
   pg_search_scope :search_by_query,
-    against: [:name, :city, :zipcode],
+    against: [:name, :address, :city, :zipcode],
     associated_against: { cuisines: :name },
     using: :tsearch
 
