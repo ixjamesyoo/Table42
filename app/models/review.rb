@@ -10,7 +10,7 @@
 #  service_rating  :integer          not null
 #  ambience_rating :integer          not null
 #  value_rating    :integer          not null
-#  recommended?    :boolean          default(FALSE), not null
+#  recommended     :boolean          default(FALSE), not null
 #  body            :text             not null
 #
 
@@ -21,7 +21,7 @@ class Review < ApplicationRecord
   validates :overall_rating, :food_rating, :service_rating, :ambience_rating,
     :value_rating, inclusion: { in: 1..5 }
   validates :user_id, uniqueness: { scope: :restaurant_id }
-  validates :recommended?, inclusion { in: [true, false] }
+  validates :recommended, inclusion: { in: 0..1 }
 
   after_initialize :no_free_recommendations
 
@@ -29,6 +29,6 @@ class Review < ApplicationRecord
   belongs_to :restaurant
 
   def no_free_recommendations
-    self.recommended? ||= false
+    self.recommended ||= 0
   end
 end

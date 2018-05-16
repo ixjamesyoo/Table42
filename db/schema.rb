@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516145002) do
+ActiveRecord::Schema.define(version: 20180516161450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20180516145002) do
     t.integer "service_rating", null: false
     t.integer "ambience_rating", null: false
     t.integer "value_rating", null: false
-    t.boolean "recommended?", default: false, null: false
     t.text "body", null: false
+    t.integer "recommended", default: 0, null: false
     t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
     t.index ["user_id", "restaurant_id"], name: "index_reviews_on_user_id_and_restaurant_id", unique: true
     t.index ["user_id"], name: "index_reviews_on_user_id"
