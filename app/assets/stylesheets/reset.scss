@@ -41,6 +41,11 @@ button {
   appearance: none;
 }
 
+select {
+  // -webkit-appearance: none;
+  // -webkit-border-radius: 0px;
+}
+
 button,
 input[type="submit"] {
   cursor: pointer;
@@ -52,6 +57,9 @@ input[type="submit"] {
     display: table;
 }
 
+
+// fix homepage css to get rid of this
 #root {
   background: #f7f7f7;
+  // background:blue;
 }

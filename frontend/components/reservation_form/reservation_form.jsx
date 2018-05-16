@@ -19,14 +19,13 @@ export default class ReservationForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { loggedIn, openModal, currentUser, restaurant } = this.props;
+    const { loggedIn, openModal, restaurant } = this.props;
     const { time, date, table_size } = this.state;
 
     if (!loggedIn) {
       openModal();
     } else {
       const reservation = {
-        user_id: currentUser.id,
         restaurant_id: restaurant.id,
         table_size,
         start_datetime: date + " " + time
@@ -43,13 +42,21 @@ export default class ReservationForm extends React.Component {
     };
   }
 
-  displayErrors() {
-    if (!this.props.errors.length) return null;
-    return (
-      <div className="reservation-message-container">
-        <p className="reservation-message-text">{ this.props.errors[0] }</p>
-      </div>
-    );
+  errorMessages() {
+    const errors = this.props.errors;
+    if (errors.length === 0) {
+      return null;
+    } else {
+      const errorLis =  errors.map( (error,idx) => (
+        <li className="reservation-message-text" key={ idx }>{ error }</li>
+      ));
+
+      return (
+        <ul className="reservation-message-container">
+          {errorLis}
+        </ul>
+      );
+    }
   }
 
   displayConfirmation() {
@@ -106,28 +113,39 @@ export default class ReservationForm extends React.Component {
     return (
       <div className="reservation-container">
         <h3 className="reservation-header">Make a reservation</h3>
-        { this.displayErrors() }
+        { this.errorMessages() }
         { this.displayConfirmation() }
 
         <form className="reservation-form" onSubmit={ this.handleSubmit }>
-          <select className="reservation-table-input"
-            value={ this.state.table_size }
-            onChange={ this.updateField("table_size") }>
-            { this.tableSizeOptions() }
-          </select>
+          <label>
+            Party Size
+            <select className="reservation-input whole"
+              value={ this.state.table_size }
+              onChange={ this.updateField("table_size") }>
+              { this.tableSizeOptions() }
+            </select>
+          </label>
 
-          <select className="reservation-time-input"
-            value={ this.state.time }
-            onChange={ this.updateField("time")}>
-            { this.timeOptions() }
-          </select>
 
-          <input type="date" min={ minDate } value={ this.state.date }
-            onChange={ this.updateField("date") }
-            className="reservation-date-input"  />
+          <div className="label-container">
+            <label>Time</label>
+            <label>Date</label>
+          </div>
+
+          <div className="half-container">
+              <select className="reservation-input half"
+                value={ this.state.time }
+                onChange={ this.updateField("time")}>
+                { this.timeOptions() }
+              </select>
+
+              <input type="date" min={ minDate } value={ this.state.date }
+                onChange={ this.updateField("date") }
+                className="reservation-input half date"  />
+          </div>
 
           <input type="submit" value="Book a Table"
-            className="reservation-submit"/>
+            className="reservation-submit whole"/>
         </form>
       </div>
     );

@@ -88,7 +88,7 @@ export default class RestaurantIndex extends React.Component {
   render(){
 
     return (
-      <div className="main-page">
+      <div className="index-page-master">
         <SearchBar />
         <div className="index-page-main">
 

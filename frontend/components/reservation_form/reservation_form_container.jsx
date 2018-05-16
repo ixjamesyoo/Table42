@@ -12,7 +12,6 @@ import ReservationForm from "./reservation_form";
 const mapStateToProps = ({ entities, session, errors, ui }, { match }) => {
   return ({
     loggedIn: Boolean(session.currentUser),
-    currentUser: entities.users[session.currentUser],
     restaurant: entities.restaurants[match.params.id],
     errors: errors.reservation,
     confirmation:  ui.reservation.confirmation
