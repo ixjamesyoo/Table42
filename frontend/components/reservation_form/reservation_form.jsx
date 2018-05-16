@@ -1,9 +1,9 @@
 import React from "react";
+import { merge } from "lodash";
 
 class ReservationForm extends React.Component {
   constructor(props) {
     super(props);
-    // restaurant_id: this.props.restaurant.id,
     this.state = {
       table_size: 2,
       time: this.props.restaurant.opening_time,
@@ -12,15 +12,46 @@ class ReservationForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  update(field) {
-    return e => this.setState({[field]: e.currentTarget.value});
+  handleSubmit(e) {
+    e.preventDefault();
+    const { loggedIn, openModal, currentUser, restaurant } = this.props;
+    const { time, date, table_size } = this.state;
+
+    if (!loggedIn) {
+      openModal();
+    } else {
+      const reservation = {
+        user_id: currentUser.id,
+        restaurant_id: restaurant.id,
+        table_size,
+        start_datetime: date + " " + time
+      };
+
+      this.props.createReservation(reservation);
+    }
+  }
+
+  updateField(field) {
+    return e => {
+      this.clearConfirmation();
+      this.setState({[field]: e.currentTarget.value});
+    };
   }
 
   displayErrors() {
     if (!this.props.errors.length) return null;
     return (
-      <div className="reservation-error-container">
-        <span className="reservation-error-text">{ this.props.errors[0] }</span>
+      <div className="reservation-message-container">
+        <span className="reservation-message-text">{ this.props.errors[0] }</span>
+      </div>
+    );
+  }
+
+  displayConfirmation() {
+    if (!this.props.confirmation) return null;
+    return (
+      <div className="reservation-message-container">
+        <span className="reservation-message-text">Table has been booked!</span>
       </div>
     );
   }
@@ -63,5 +94,36 @@ class ReservationForm extends React.Component {
     return tableArray;
   }
 
+  render() {
+    let today = new Date();
+    let minDate = today.toISOString().slice(0, 10);
 
+    return (
+      <div className="reservation-container">
+        <h3 className="reservation-header">Make a reservation</h3>
+        { this.displayErrors }
+
+        <form className="reservation-form" onSubmit={ this.handleSubmit }>
+          <select className="reservation-table-input"
+            value={ this.state.table_size }
+            onChange={ this.updateField("table_size") }>
+            { this.tableSizeOptions() }
+          </select>
+
+          <select className="reservation-time-input"
+            value={ this.state.time }
+            onChange={ this.updateField("time")}>
+            { this.timeOptions() }
+          </select>
+
+          <input type="date" min={ minDate } value={ this.state.date }
+            onChange={ this.updateField("date") }
+            className="reservation-date-input"  />
+
+          <input type="submit" value="Book a Table"
+            className="reservation-submit"/>
+        </form>
+      </div>
+    );
+  }
 }
