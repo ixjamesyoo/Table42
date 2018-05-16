@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {
   createReview,
   receiveReviewErrors
@@ -8,6 +9,7 @@ import ReviewForm from "./review_form";
 
 const mapStateToProps = ({ entities, session, errors }, { match }) => {
   return ({
+    formType: "create",
     errors: errors.review,
     restaurant: entities.restaurants[match.params.id],
     currentUser: entities.users[session.currentUser]
@@ -22,4 +24,4 @@ const mapDispatchToProps = (dispatch) => {
   });
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ReviewForm));

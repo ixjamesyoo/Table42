@@ -1,7 +1,9 @@
 import React from "react";
 import ReservationForm from "../reservation_form/reservation_form_container";
+import ReviewForm from "../review_form/create_review_container";
 import LoadingSpinner from "../loading_spinner/loading_spinner";
 import { dollarSigns } from "../restaurant_index/restaurant_index_helper";
+
 
 class RestaurantShow extends React.Component {
   componentDidMount(){
@@ -39,7 +41,7 @@ class RestaurantShow extends React.Component {
           <p className="show-blurb">{ restaurant.description }</p>
         </div>
 
-        <div>More stuff will go here</div>
+        <div><ReviewForm /></div>
       </div>
     );
   }

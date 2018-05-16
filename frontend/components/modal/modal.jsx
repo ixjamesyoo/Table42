@@ -5,6 +5,7 @@ export default ({ modal, closeModal }) => {
   if (!modal) {
     return null;
   }
+
   const formType = modal === "login" ? "login" : "signup";
   return (
     <div className="modal-background" onClick={ closeModal }>
