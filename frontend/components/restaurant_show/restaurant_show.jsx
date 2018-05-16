@@ -6,9 +6,24 @@ import { dollarSigns } from "../restaurant_index/restaurant_index_helper";
 
 
 class RestaurantShow extends React.Component {
+  constructor(props){
+    super(props);
+    this.handleReview = this.handleReview.bind(this);
+  }
+
   componentDidMount(){
     this.props.fetchRestaurant();
     window.scrollTo(0,0);
+  }
+
+  handleReview(e){
+    e.preventDefault();
+    if (this.props.loggedIn){
+      this.props.openCreateReview();
+    } else {
+      this.props.openLogin();
+    }
+
   }
 
   mainContent(){
@@ -41,7 +56,11 @@ class RestaurantShow extends React.Component {
           <p className="show-blurb">{ restaurant.description }</p>
         </div>
 
-        <div><ReviewForm /></div>
+        <div>
+          <button onClick={ this.handleReview }>
+            Write a Review!
+          </button>
+        </div>
       </div>
     );
   }
@@ -62,7 +81,6 @@ class RestaurantShow extends React.Component {
           /></div>
         <div className="show-page-and-form">
           { this.mainContent() }
-
 
           <div className="show-page-reservation">
             <ReservationForm />
