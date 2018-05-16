@@ -1,4 +1,5 @@
 import React from "react";
+import ReservationForm from "../reservation_form/reservation_form_container";
 import LoadingSpinner from "../loading_spinner/loading_spinner";
 import { dollarSigns } from "../restaurant_index/restaurant_index_helper";
 
@@ -61,9 +62,9 @@ class RestaurantShow extends React.Component {
           { this.mainContent() }
 
 
-          <form className="show-page-reservation">
-            SOME STUFF WILL GO HERE
-          </form>
+          <div className="show-page-reservation">
+            <ReservationForm />
+          </div>
         </div>
       </div>
     );

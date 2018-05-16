@@ -1,7 +1,7 @@
 import React from "react";
 import { merge } from "lodash";
 
-class ReservationForm extends React.Component {
+export default class ReservationForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,6 +10,11 @@ class ReservationForm extends React.Component {
       date: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.props.clearReservationErrors();
+    this.props.clearReservationConfirmation();
   }
 
   handleSubmit(e) {
@@ -33,7 +38,7 @@ class ReservationForm extends React.Component {
 
   updateField(field) {
     return e => {
-      this.clearConfirmation();
+      this.props.clearReservationConfirmation();
       this.setState({[field]: e.currentTarget.value});
     };
   }
@@ -42,7 +47,7 @@ class ReservationForm extends React.Component {
     if (!this.props.errors.length) return null;
     return (
       <div className="reservation-message-container">
-        <span className="reservation-message-text">{ this.props.errors[0] }</span>
+        <p className="reservation-message-text">{ this.props.errors[0] }</p>
       </div>
     );
   }
@@ -51,7 +56,7 @@ class ReservationForm extends React.Component {
     if (!this.props.confirmation) return null;
     return (
       <div className="reservation-message-container">
-        <span className="reservation-message-text">Table has been booked!</span>
+        <p className="reservation-message-text">Table has been reserved!</p>
       </div>
     );
   }
@@ -69,7 +74,7 @@ class ReservationForm extends React.Component {
       for (let j = 0; j<= 45; j += 15) {
         let timeString = hourString + ":";
         timeString += j === 0 ? "00" : j.toString();
-        timeString += i > 12 ? " PM" : " AM";
+        timeString += i >= 12 ? " PM" : " AM";
         timesArray.push(timeString);
 
         if (i === jsClosingHour - 1) break;
@@ -101,7 +106,8 @@ class ReservationForm extends React.Component {
     return (
       <div className="reservation-container">
         <h3 className="reservation-header">Make a reservation</h3>
-        { this.displayErrors }
+        { this.displayErrors() }
+        { this.displayConfirmation() }
 
         <form className="reservation-form" onSubmit={ this.handleSubmit }>
           <select className="reservation-table-input"

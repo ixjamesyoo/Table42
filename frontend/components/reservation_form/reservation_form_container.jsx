@@ -22,8 +22,8 @@ const mapStateToProps = ({ entities, session, errors, ui }, { match }) => {
 const mapDispatchToProps = (dispatch) => {
   return ({
     createReservation: reservation => dispatch(createReservation(reservation)),
-    clearErrors: () => dispatch(receiveReservationErrors([])),
-    clearConfirmation: () => dispatch(clearReservationConfirmation()),
+    clearReservationErrors: () => dispatch(receiveReservationErrors([])),
+    clearReservationConfirmation: () => dispatch(clearReservationConfirmation()),
     openModal: () => dispatch(openModal("login")),
   });
 };
