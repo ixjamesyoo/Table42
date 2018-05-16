@@ -4,34 +4,41 @@ export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const REMOVE_REVIEW = "REMOVE_REVIEW";
 export const RECEIVE_REVIEW_ERRORS = "RECEIVE_REVIEW_ERRORS";
 
-export const createReservation = reservation => dispatch => {
-  return ReservationApiUtil.createReservation(reservation).then(newRes => {
-      dispatch(receiveReservationConfirmation());
-      dispatch(receiveReservation(newRes));
+export const createReview = review => dispatch => {
+  return ReviewApiUtil.createReview(review).then(newReview => {
+      dispatch(receiveReview(newReview));
   }, err => {
-    dispatch(receiveReservationErrors(err.responseJSON));
+    dispatch(receiveReviewErrors(err.responseJSON));
   });
 };
 
-export const deleteReservation = id => dispatch => {
-  return ReservationApiUtil.deleteReservation(id).then(res => {
-    dispatch(removeReservation(res));
+export const updateReview = review => dispatch => {
+  return ReviewApiUtil.updateReview(review).then(newReview => {
+      dispatch(receiveReview(newReview));
+  }, err => {
+    dispatch(receiveReviewErrors(err.responseJSON));
   });
 };
 
-export const receiveReservation = reservation => ({
-  type: RECEIVE_RESERVATION,
-  reservation
+export const deleteReview = id => dispatch => {
+  return ReviewApiUtil.deleteReservation(id).then(res => {
+    dispatch(removeReview(res));
+  });
+};
+
+export const receiveReview = review => ({
+  type: RECEIVE_REVIEW,
+  review
 });
 
-export const removeReservation = reservation => ({
-  type: REMOVE_RESERVATION,
-  reservation
+export const removeReview = review => ({
+  type: REMOVE_REVIEW,
+  review
 });
 
-export const receiveReservationErrors = errors => {
+export const receiveReviewErrors = errors => {
   return  ({
-    type: RECEIVE_RESERVATION_ERRORS,
+    type: RECEIVE_REVIEW_ERRORS,
     errors
   });
 };
