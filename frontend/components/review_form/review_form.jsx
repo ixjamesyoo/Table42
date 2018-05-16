@@ -44,7 +44,6 @@ export default class ReviewForm extends React.Component {
     delete review.hovering;
     delete review.hoverValue;
     processForm(review);
-    closeModal();
   }
 
   updateRating(ratingType, newRating) {
@@ -111,8 +110,8 @@ export default class ReviewForm extends React.Component {
     const { restaurant } = this.props;
 
     return (
-      <label>{ `Would you recommend ${restaurant.name} to a friend?` }
-        <input type="checkbox"
+      <label className="rec-label">{ `Would you recommend ${restaurant.name} to a friend?` }
+        <input className="checkbox" type="checkbox"
           value={ this.state.recommended }
           checked={ Boolean(this.state.recommended) }
           onChange={ this.toggleRecommendation }
@@ -126,12 +125,14 @@ export default class ReviewForm extends React.Component {
 
     return (
       <div className="review-form-container">
-        { this.errorMessages() }
+        <button onClick={this.props.closeModal}
+          className="close-button">&times;</button>
         <form className="review-form" onSubmit={ this.handleSubmit }>
+
           <h3 className="review-header">
             { `${currentUser.fname}, how was your dining experience at ${restaurant.name}?` }
           </h3>
-
+          { this.errorMessages() }
           <div className="ratings-container">
             <label>Overall Rating
               <div className="star-container">
