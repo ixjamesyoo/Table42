@@ -19,11 +19,22 @@ class RestaurantShow extends React.Component {
   handleReview(e){
     e.preventDefault();
     if (this.props.loggedIn){
+      this.props.clearReviewConfirmation();
       this.props.openCreateReview();
     } else {
       this.props.openLogin();
     }
 
+  }
+
+  displayReviewConfirmation() {
+    if (this.props.reviewConfirmation) {
+      return (
+        <span className="review-confirmation">Review submitted!</span>
+      );
+    } else {
+      return null;
+    }
   }
 
   mainContent(){
@@ -60,6 +71,7 @@ class RestaurantShow extends React.Component {
           <button onClick={ this.handleReview }>
             Write a Review!
           </button>
+          { this.displayReviewConfirmation() }
         </div>
       </div>
     );
