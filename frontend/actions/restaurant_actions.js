@@ -21,10 +21,11 @@ export const loadingRestaurants = () => ({
   type: LOADING_RESTAURANTS
 });
 
-export const receiveRestaurant = ({ restaurant }) => {
+export const receiveRestaurant = ({ restaurant, reviews }) => {
   return ({
     type: RECEIVE_RESTAURANT,
-    restaurant
+    restaurant,
+    reviews
   });
 };
 

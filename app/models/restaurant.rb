@@ -93,4 +93,29 @@ class Restaurant < ApplicationRecord
   def cleanup_zipcode
     self.zipcode ||= 12345
   end
+
+  def overall_rating
+    self.reviews.average(:overall_rating).round(1)
+  end
+
+  def recommendation_rate
+    self.reviews.average(:recommended).round(2)
+  end
+
+  def food_rating
+    self.reviews.average(:food_rating).round(1)
+  end
+
+  def ambience_rating
+    self.reviews.average(:ambience_rating).round(1)
+  end
+
+  def service_rating
+    self.reviews.average(:service_rating).round(1)
+  end
+
+  def value_rating
+    self.reviews.average(:value_rating).round(1)
+  end
+
 end

@@ -5,23 +5,22 @@ import { openModal } from "../../actions/modal_actions";
 import { clearReviewConfirmation } from "../../actions/review_actions";
 import RestaurantShow from "./restaurant_show";
 
-const mapStateToProps = (state, { match }) => {
+const mapStateToProps = ({ entities, errors, session, ui }, { match }) => {
   return ({
-    restaurant: state.entities.restaurants[match.params.id],
-    errors: state.errors.restaurant,
-    loading: state.ui.loading.showLoading,
-    loggedIn: Boolean(state.session.currentUser),
-    reviewConfirmation: state.ui.review.confirmation,
+    restaurant: entities.restaurants[match.params.id],
+    errors: errors.restaurant,
+    loading: ui.loading.showLoading,
   });
 };
+// loggedIn: Boolean(session.currentUser),
+// reviewConfirmation: ui.review.confirmation,
 
 const mapDispatchToProps = (dispatch, { match }) => {
   return ({
     fetchRestaurant: () => dispatch(fetchRestaurant(match.params.id)),
-    openCreateReview: () => dispatch(openModal("create review")),
-    openLogin: () => dispatch(openModal("login")),
-    clearReviewConfirmation: () => dispatch(clearReviewConfirmation()),
   });
 };
+// openLogin: () => dispatch(openModal("login")),
+// clearReviewConfirmation: () => dispatch(clearReviewConfirmation()),
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantShow);

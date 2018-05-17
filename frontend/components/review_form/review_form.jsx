@@ -47,7 +47,10 @@ export default class ReviewForm extends React.Component {
   }
 
   updateRating(ratingType, newRating) {
-    return (e) => this.setState({ [ratingType]: newRating });
+    return (e) => {
+      this.props.clearReviewErrors();
+      this.setState({ [ratingType]: newRating });
+    };
   }
 
   handleMouseEnter(ratingType, i) {
@@ -63,8 +66,6 @@ export default class ReviewForm extends React.Component {
       hoverValue: null
     });
   }
-
-
 
   errorMessages() {
     const errors = this.props.errors;
@@ -103,6 +104,7 @@ export default class ReviewForm extends React.Component {
 
   toggleRecommendation(e) {
     const newVal = this.state.recommended ? 0 : 1;
+    this.props.clearReviewErrors();
     this.setState({ recommended: newVal });
   }
 

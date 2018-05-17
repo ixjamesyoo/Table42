@@ -19,11 +19,11 @@ export default class ReservationForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { loggedIn, openModal, restaurant } = this.props;
+    const { loggedIn, openLogin, restaurant } = this.props;
     const { time, date, table_size } = this.state;
 
     if (!loggedIn) {
-      openModal();
+      openLogin();
     } else {
       const reservation = {
         restaurant_id: restaurant.id,
@@ -96,7 +96,7 @@ export default class ReservationForm extends React.Component {
   tableSizeOptions() {
     let tableArray = [];
 
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 10; i++) {
       tableArray.push(
         <option key={i} value={i}>
           {i === 1 ? i + " person" : i + " people"}
@@ -119,7 +119,7 @@ export default class ReservationForm extends React.Component {
         <form className="reservation-form" onSubmit={ this.handleSubmit }>
           <label>
             Party Size
-            <select className="reservation-input whole"
+            <select className="reservation-input whole party"
               value={ this.state.table_size }
               onChange={ this.updateField("table_size") }>
               { this.tableSizeOptions() }
@@ -133,7 +133,7 @@ export default class ReservationForm extends React.Component {
           </div>
 
           <div className="half-container">
-              <select className="reservation-input half"
+              <select className="reservation-input half time"
                 value={ this.state.time }
                 onChange={ this.updateField("time")}>
                 { this.timeOptions() }

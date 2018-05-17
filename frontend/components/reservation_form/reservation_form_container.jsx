@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import { withRouter } from "react-router-dom";
 import {
   createReservation,
-  receiveReservationErrors,
+  clearReservationErrors,
   clearReservationConfirmation
 } from '../../actions/reservation_actions';
 import { openModal } from "../../actions/modal_actions";
@@ -21,9 +21,9 @@ const mapStateToProps = ({ entities, session, errors, ui }, { match }) => {
 const mapDispatchToProps = (dispatch) => {
   return ({
     createReservation: reservation => dispatch(createReservation(reservation)),
-    clearReservationErrors: () => dispatch(receiveReservationErrors([])),
+    clearReservationErrors: () => dispatch(clearReservationErrors()),
     clearReservationConfirmation: () => dispatch(clearReservationConfirmation()),
-    openModal: () => dispatch(openModal("login")),
+    openLogin: () => dispatch(openModal("login")),
   });
 };
 

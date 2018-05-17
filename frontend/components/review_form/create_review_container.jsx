@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
   createReview,
-  receiveReviewErrors
+  clearReviewErrors
 } from '../../actions/review_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import ReviewForm from "./review_form";
@@ -18,7 +18,7 @@ const mapStateToProps = ({ entities, session, errors }, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return ({
     processForm: review => dispatch(createReview(review)),
-    clearReviewErrors: () => dispatch(receiveReviewErrors([])),
+    clearReviewErrors: () => dispatch(clearReviewErrors()),
     closeModal: () => dispatch(closeModal())
   });
 };

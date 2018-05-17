@@ -3,38 +3,17 @@ import ReservationForm from "../reservation_form/reservation_form_container";
 import ReviewForm from "../review_form/create_review_container";
 import LoadingSpinner from "../loading_spinner/loading_spinner";
 import { dollarSigns } from "../restaurant_index/restaurant_index_helper";
+import ReviewIndex from "../review_index/review_index_container";
 
 
 class RestaurantShow extends React.Component {
   constructor(props){
     super(props);
-    this.handleReview = this.handleReview.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchRestaurant();
     window.scrollTo(0,0);
-  }
-
-  handleReview(e){
-    e.preventDefault();
-    if (this.props.loggedIn){
-      this.props.clearReviewConfirmation();
-      this.props.openCreateReview();
-    } else {
-      this.props.openLogin();
-    }
-
-  }
-
-  displayReviewConfirmation() {
-    if (this.props.reviewConfirmation) {
-      return (
-        <span className="review-confirmation">Review submitted!</span>
-      );
-    } else {
-      return null;
-    }
   }
 
   mainContent(){
@@ -56,23 +35,18 @@ class RestaurantShow extends React.Component {
             </ul>
 
             <ul className="review-details">
-              <li>Overall: 5</li>
-              <li>Food: 5</li>
-              <li>Value: 4</li>
-              <li>Service: 4</li>
-              <li>Ambience: 5</li>
+              <li>{`Overall: ${ restaurant.overall_rating }` }</li>
+              <li>{`Food: ${ restaurant.food_rating }` }</li>
+              <li>{`Value: ${ restaurant.value_rating }` }</li>
+              <li>{`Service: ${ restaurant.service_rating }` }</li>
+              <li>{`Ambience: ${ restaurant.ambience_rating }` }</li>
             </ul>
           </div>
 
           <p className="show-blurb">{ restaurant.description }</p>
         </div>
 
-        <div>
-          <button onClick={ this.handleReview }>
-            Write a Review!
-          </button>
-          { this.displayReviewConfirmation() }
-        </div>
+        <ReviewIndex/>
       </div>
     );
   }
