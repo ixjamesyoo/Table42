@@ -19,7 +19,7 @@ class Api::RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.includes(:cuisines).find_by(id: params[:id])
+    @restaurant = Restaurant.includes(:cuisines, reviews: :user).find_by(id: params[:id])
     if @restaurant
       render :show
     else
@@ -27,14 +27,14 @@ class Api::RestaurantsController < ApplicationController
     end
   end
 
-  def create
-    @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-      render :show
-    else
-      render json: @restaurant.errors.full_messages, status: 422
-    end
-  end
+  # def create
+  #   @restaurant = Restaurant.new(restaurant_params)
+  #   if @restaurant.save
+  #     render :show
+  #   else
+  #     render json: @restaurant.errors.full_messages, status: 422
+  #   end
+  # end
 
   private
   def restaurant_params

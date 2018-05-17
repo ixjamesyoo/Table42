@@ -3,6 +3,8 @@ import * as ReviewApiUtil from '../util/review_api_util';
 export const RECEIVE_REVIEW = "RECEIVE_REVIEW";
 export const REMOVE_REVIEW = "REMOVE_REVIEW";
 export const RECEIVE_REVIEW_ERRORS = "RECEIVE_REVIEW_ERRORS";
+export const RECEIVE_REVIEW_CONFIRMATION = "RECEIVE_REVIEW_CONFIRMATION";
+export const CLEAR_REVIEW_CONFIRMATION = "CLEAR_REVIEW_CONFIRMATION";
 
 export const createReview = review => dispatch => {
   return ReviewApiUtil.createReview(review).then(newReview => {
@@ -14,6 +16,7 @@ export const createReview = review => dispatch => {
 
 export const updateReview = review => dispatch => {
   return ReviewApiUtil.updateReview(review).then(newReview => {
+      dispatch(receiveReviewConfirmation());
       dispatch(receiveReview(newReview));
   }, err => {
     dispatch(receiveReviewErrors(err.responseJSON));
@@ -40,5 +43,17 @@ export const receiveReviewErrors = errors => {
   return  ({
     type: RECEIVE_REVIEW_ERRORS,
     errors
+  });
+};
+
+export const receiveReviewConfirmation = () => {
+  return ({
+    type: RECEIVE_REVIEW_CONFIRMATION,
+  });
+};
+
+export const clearReviewConfirmation = () => {
+  return ({
+    type: CLEAR_REVIEW_CONFIRMATION,
   });
 };
