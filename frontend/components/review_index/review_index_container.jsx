@@ -5,11 +5,10 @@ import { openModal } from "../../actions/modal_actions";
 import { clearReviewConfirmation } from "../../actions/review_actions";
 import ReviewIndex from "./review_index";
 
-const mapStateToProps = ({ entities, session, ui}, { match }) => {
+const mapStateToProps = ({ entities, session, ui }, { match }) => {
   return ({
     restaurant: entities.restaurants[match.params.id],
     reviews: entities.reviews,
-    reviewIds: entities.restaurants[match.params.id].review_ids,
     currentUserId: session.currentUser,
     loggedIn: Boolean(session.currentUser),
     reviewConfirmation: ui.review.confirmation,

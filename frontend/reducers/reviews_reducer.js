@@ -6,13 +6,17 @@ export default (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_REVIEW:
-      return merge({}, state, { [action.review.id]: action.review });
+      const newReviewIds = state.review_ids.concat([action.review.id]);
+      return merge({}, state, {
+        [action.review.id]: action.review,
+        review_ids: newReviewIds
+      });
     case REMOVE_REVIEW:
       const newState = merge({}, state);
       delete newState[action.review.id];
       return newState;
     case RECEIVE_RESTAURANT:
-      return merge({}, state, action.reviews);
+      return action.reviews;
     default:
       return state;
 

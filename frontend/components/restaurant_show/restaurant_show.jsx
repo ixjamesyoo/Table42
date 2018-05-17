@@ -32,6 +32,10 @@ class RestaurantShow extends React.Component {
               <li>Phone: { restaurant.phone_number }</li>
               <li>Opens at { restaurant.opening_time }</li>
               <li>Closes at { restaurant.closing_time }</li>
+              <li id="recommendation-rate">
+                <i className="fa fa-thumbs-up" aria-hidden="true"/>
+                {`${Math.round(restaurant.recommendation_rate * 100)}% of diners recommend this establishment.`}
+              </li>
             </ul>
 
             <ul className="review-details">
@@ -40,9 +44,9 @@ class RestaurantShow extends React.Component {
               <li>{`Value: ${ restaurant.value_rating }` }</li>
               <li>{`Service: ${ restaurant.service_rating }` }</li>
               <li>{`Ambience: ${ restaurant.ambience_rating }` }</li>
+
             </ul>
           </div>
-
           <p className="show-blurb">{ restaurant.description }</p>
         </div>
 

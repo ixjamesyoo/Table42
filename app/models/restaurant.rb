@@ -48,9 +48,10 @@ class Restaurant < ApplicationRecord
   CTIMES = [ "19:00:00", "20:00:00", "21:00:00", "22:00:00" ]
   DESCRIPTIONS = [
     "Upscale restaurant for refined palates.",
-    "Casual ambience, perfect for family outings.",
     "Elegant atmosphere, great for special occasions.",
-    "Will accommodate your noisy children. For a price.",
+    "Also a casual ambience, perfect for family outings.",
+    "We serve small, overpriced portions but they are perfect for Instagram.",
+    "Will accommodate your noisy children for a price.",
     "Come eat our food please.",
     "We are better than our competitors down the block."
   ]

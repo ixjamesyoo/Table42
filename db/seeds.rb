@@ -76,7 +76,7 @@ cities.each do |city|
 
       phone_number = Restaurant.random_phone_number
 
-      description = Restaurant::DESCRIPTIONS.sample
+      description = Restaurant::DESCRIPTIONS.join(" ")
       price_range = restaurant["price_range"]
       opening_time = Restaurant::OTIMES.sample
       closing_time = Restaurant::CTIMES.sample

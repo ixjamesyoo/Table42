@@ -5,7 +5,6 @@ json.restaurant do
   json.closing_time @restaurant.parsed_time(@restaurant.closing_time)
   json.phone_number @restaurant.parsed_phone_number
   json.fetched true
-  json.review_ids @restaurant.reviews.map(&:id)
   json.food_rating @restaurant.food_rating
   json.service_rating @restaurant.service_rating
   json.ambience_rating @restaurant.ambience_rating
@@ -13,6 +12,7 @@ json.restaurant do
 end
 
 json.reviews do
+  json.review_ids @restaurant.reviews.map(&:id)
   @restaurant.reviews.each do |review|
     json.set! review.id do
       json.partial! 'api/reviews/review', review: review

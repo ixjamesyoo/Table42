@@ -20,7 +20,6 @@ const RestaurantIndexItem = ({ restaurant }) => {
           <li className="restaurant-overview">{ cuisineText }</li>
           <li>{ dollarSigns(restaurant.price_range) }</li>
           <li className="restaurant-overview">{ restaurant.address }</li>
-          <li className="restaurant-blurb">{ restaurant.description }</li>
         </ul>
 
         <section className="search-result-reservation-section">

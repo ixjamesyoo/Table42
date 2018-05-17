@@ -33,7 +33,7 @@
 
 
 .show-title {
-  color: #237b98;
+  color: black;
   width: 80%;
   margin: auto;
   text-align: center;
@@ -52,7 +52,7 @@
   justify-content: space-between;
 
   li {
-    color: #666;
+    color: black;
     margin-bottom: 2px;
   }
 }
@@ -63,7 +63,18 @@
 
 .show-blurb {
   // text-align: center;
-  color: #666;
+  color: black;
   width: 590px;
-  margin: 20px auto;
+  margin: 10px auto;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+#recommendation-rate {
+  margin-top: 25px;
+
+  i {
+    color: #ccc;
+    margin-right: 7px;
+  }
 }
