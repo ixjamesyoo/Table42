@@ -13,8 +13,15 @@
 }
 
 .write-review-button {
-  color: #237b98
+  color: #237b98;
+  font-size: 18px;
 }
+
+.write-review-button:hover {
+  text-decoration: underline;
+  color: #1c657d;
+}
+
 
 .review-item-container {
   margin-top: 20px;

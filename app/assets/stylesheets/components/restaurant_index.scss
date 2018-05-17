@@ -71,17 +71,24 @@
 }
 
 .restaurant-name {
-  color: #237b98;
-  font-size: 18px;
+  // color: #237b98;
+  color: #da3743;
+  font-size: 22px;
   line-height: 18px;
+  font-weight: 550;
 }
 
 .restaurant-name:hover {
-  color: #1c657d;
+  // color: #1c657d;
+  color: #c2242e;
 }
 
 .restaurant-overview {
-  color: #666;
+  color: #black;
+}
+
+.res-ul {
+  margin-top: 8px;
 }
 
 .light-dollar {
@@ -91,6 +98,25 @@
 .restaurant-blurb {
   font-size: 14px;
   color: #666;
+}
+
+.other-info {
+  margin-top: 17px;
+}
+
+#index-overall {
+  color: black;
+  font-size: 15px;
+}
+
+#index-recommend {
+  color: #237b98;
+  font-size: 14px;
+
+  i {
+    margin-right: 5px;
+    color: #ccc;
+  }
 }
 
 // this is somewhat similar to what i will eventually want
