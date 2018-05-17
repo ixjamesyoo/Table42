@@ -1,14 +1,13 @@
-export const createFavorite = favorite => {
+export const createFavorite = restaurantId => {
   return $.ajax({
     method: "POST",
-    url: "/api/favorites",
-    data: { favorite }
+    url: `/api/restaurants/${restaurantId}/favorites`,
   });
 };
 
-export const deleteFavorite = favoriteId => {
+export const deleteFavorite = restaurantId => {
   return $.ajax({
     method: "DELETE",
-    url: `/api/favorites/${favoriteId}`
+    url: `/api/restaurants/${restaurantId}/favorites`
   });
 };

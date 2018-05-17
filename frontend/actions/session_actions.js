@@ -6,10 +6,11 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 
-export const receiveCurrentUser = user => {
+export const receiveCurrentUser = ({ user, favorites }) => {
   return ({
     type: RECEIVE_CURRENT_USER,
-    user
+    user,
+    favorites
   });
 };
 
@@ -32,8 +33,8 @@ export const clearSessionErrors = () => {
 };
 
 export const signup = user => dispatch => {
-  return SessionAPIUtil.signup(user).then(currentUser => {
-    dispatch(receiveCurrentUser(currentUser));
+  return SessionAPIUtil.signup(user).then(payload => {
+    dispatch(receiveCurrentUser(payload));
     dispatch(closeModal());
   }, err => {
     dispatch(receiveSessionErrors(err.responseJSON));
@@ -41,8 +42,8 @@ export const signup = user => dispatch => {
 };
 
 export const login = user => dispatch => {
-  return SessionAPIUtil.login(user).then(currentUser => {
-    dispatch(receiveCurrentUser(currentUser));
+  return SessionAPIUtil.login(user).then(payload => {
+    dispatch(receiveCurrentUser(payload));
     dispatch(closeModal());
   }, err => (
     dispatch(receiveSessionErrors(err.responseJSON))
@@ -50,7 +51,7 @@ export const login = user => dispatch => {
 };
 
 export const logout = () => dispatch => {
-  return SessionAPIUtil.logout().then(user => (
+  return SessionAPIUtil.logout().then( () => (
     dispatch(logoutCurrentUser())
   ), err => (
     dispatch(receiveSessionErrors(err.responseJSON))
