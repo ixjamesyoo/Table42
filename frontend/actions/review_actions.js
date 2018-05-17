@@ -27,8 +27,8 @@ export const updateReview = review => dispatch => {
 };
 
 export const deleteReview = id => dispatch => {
-  return ReviewApiUtil.deleteReservation(id).then(res => {
-    dispatch(removeReview(res));
+  return ReviewApiUtil.deleteReview(id).then(review => {
+    dispatch(removeReview(review));
   });
 };
 
