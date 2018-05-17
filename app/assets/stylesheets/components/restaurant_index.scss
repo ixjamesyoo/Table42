@@ -83,30 +83,26 @@
   color: #c2242e;
 }
 
-.restaurant-overview {
-  color: #black;
-}
-
 .res-ul {
   margin-top: 8px;
+
+  li {
+    color: #666;
+  }
 }
 
 .light-dollar {
   color: #ccc;
 }
 
-.restaurant-blurb {
-  font-size: 14px;
-  color: #666;
-}
 
 .other-info {
   margin-top: 17px;
 }
 
 #index-overall {
-  color: black;
-  font-size: 15px;
+  color: #666;
+  font-size: 14px;
 }
 
 #index-recommend {
