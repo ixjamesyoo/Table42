@@ -9,9 +9,21 @@ User.destroy_all
 Categorization.destroy_all
 Restaurant.destroy_all
 Cuisine.destroy_all
+Reservation.destroy_all
+Review.destroy_all
 
 User.create!(email: "guest@guest.com", fname: "Guest", lname: "User",
   password:"password", city:"New York City")
+
+100.times do
+  User.create(
+    email: Faker::Internet.email,
+    fname: Faker::Name.first_name,
+    lname: Faker::Name.last_name,
+    city: Faker::Address.city,
+    password: Faker::Internet.password
+  )
+end
 
 cuisines = [
   ["American", "1"],
@@ -85,3 +97,53 @@ cities.each do |city|
     end
   end
 end
+
+User.all.each do |user|
+  100.times do
+    Review.create(
+      user: user,
+      restaurant: Restaurant.all.sample,
+      overall_rating: (1..5).to_a.sample,
+      food_rating: (1..5).to_a.sample,
+      service_rating: (1..5).to_a.sample,
+      ambience_rating: (1..5).to_a.sample,
+      value_rating: (1..5).to_a.sample,
+      recommended: (0..1).to_a.sample,
+      body: Faker::Hipster.paragraph(3)
+    )
+  end
+end
+
+#  id             :bigint(8)        not null, primary key
+#  user_id        :integer          not null
+#  restaurant_id  :integer          not null
+#  start_datetime :datetime         not null
+#  table_size     :integer          not null
+#  end_datetime   :datetime         not null
+Reservation.create!(
+  user: User.first,
+  restaurant: Restaurant.find_by(name: "Peter Luger Steak House"),
+  table_size: 2,
+  start_datetime: "2018-05-25 12:00PM"
+)
+
+Reservation.create!(
+  user: User.first,
+  restaurant: Restaurant.find_by(name: "The Meatball Shop"),
+  table_size: 4,
+  start_datetime: "2018-05-28 03:00PM"
+)
+
+Reservation.create!(
+  user: User.first,
+  restaurant: Restaurant.find_by(name: "Shake Shack"),
+  table_size: 3,
+  start_datetime: "2018-06-20 12:00PM"
+)
+
+Reservation.create!(
+  user: User.first,
+  restaurant: Restaurant.find_by(name: "Virgil's Real BBQ -Times Square"),
+  table_size: 5,
+  start_datetime: "2018-08-25 12:00PM"
+)

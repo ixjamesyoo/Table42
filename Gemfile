@@ -35,6 +35,7 @@ gem 'jquery-rails'
 gem 'romato'
 gem 'figaro'
 gem 'pg_search'
+gem 'faker'
 # gem 'validates_timeliness', '~> 4.0'
 
 group :development, :test do
