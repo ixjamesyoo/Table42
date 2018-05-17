@@ -27,6 +27,14 @@ export default class ReviewIndex extends React.Component {
     }
   }
 
+  reviewItems(){
+    const { reviews, reviewIds, currentUserId } = this.props;
+    return reviewIds.map(id => (
+      <ReviewIndexItem id={ id } review={ reviews[id] }
+        currentUserId={ currentUserId }/>
+    ));
+  }
+
   render() {
     const { restaurant } = this.props;
 
@@ -34,13 +42,15 @@ export default class ReviewIndex extends React.Component {
       <div className="review-master">
         <header>
           <h3>{ `${restaurant.name} Reviews` }</h3>
+          { this.displayReviewConfirmation() }
+          <button className="write-review-button" onClick={ this.handleReview }>
+            Write a Review!
+          </button>
         </header>
 
-
-        <button onClick={ this.handleReview }>
-          Write a Review!
-        </button>
-        { this.displayReviewConfirmation() }
+        <ul className="reviews-container">
+          { this.reviewItems()}
+        </ul>
       </div>
     );
 
