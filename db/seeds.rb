@@ -114,12 +114,6 @@ User.all.each do |user|
   end
 end
 
-#  id             :bigint(8)        not null, primary key
-#  user_id        :integer          not null
-#  restaurant_id  :integer          not null
-#  start_datetime :datetime         not null
-#  table_size     :integer          not null
-#  end_datetime   :datetime         not null
 Reservation.create!(
   user: User.first,
   restaurant: Restaurant.find_by(name: "Peter Luger Steak House"),
