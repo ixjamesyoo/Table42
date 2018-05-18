@@ -21,7 +21,8 @@ class Review < ApplicationRecord
   validates :overall_rating, :food_rating, :service_rating, :ambience_rating,
     :value_rating, inclusion: { in: 1..5 }
   validates :recommended, inclusion: { in: 0..1 }
-  validates :user_id, uniqueness: { scope: :restaurant_id }
+  validates :user_id, uniqueness: { scope: :restaurant_id,
+    message: "already reviewed this restaurant" }
 
   after_initialize :no_free_recommendations
 

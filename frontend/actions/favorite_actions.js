@@ -17,8 +17,8 @@ export const deleteFavorite = restaurantId => dispatch => {
 };
 
 export const fetchFavorites = userId => dispatch => {
-  return FavoriteApiUtil.fetchFavorites(userId).then(favorites => {
-    dispatch(receiveFavorites(favorites));
+  return FavoriteApiUtil.fetchFavorites(userId).then(payload => {
+    dispatch(receiveFavorites(payload));
   });
 };
 
