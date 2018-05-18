@@ -85,8 +85,11 @@
   font-size: 24px;
   float: right;
   color: #aaa;
-  margin-top: 5px;
-  margin-right: 5px;
+  margin-right: 8px;
+}
+
+.review-close-button:hover {
+  color: black;
 }
 
 .review-error-text {

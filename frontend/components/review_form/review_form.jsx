@@ -128,7 +128,7 @@ export default class ReviewForm extends React.Component {
     return (
       <div className="review-form-container">
         <button onClick={this.props.closeModal}
-          className="close-button">&times;</button>
+          className="review-close-button">&times;</button>
         <form className="review-form" onSubmit={ this.handleSubmit }>
 
           <h3 className="review-header">

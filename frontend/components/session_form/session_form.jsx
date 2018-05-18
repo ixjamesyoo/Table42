@@ -162,7 +162,7 @@ class SessionForm extends React.Component {
     return (
       <div className="session-form-container">
         <button onClick={this.props.closeModal}
-          className="review-close-button">&times;</button>
+          className="close-button">&times;</button>
         <div className="session-form-header">
           { this.formHeader() }
           { this.errorMessages() }
