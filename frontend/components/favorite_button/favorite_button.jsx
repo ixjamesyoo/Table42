@@ -31,7 +31,7 @@ export default ({
 
   return (
     <button className={ name } onClick={ handleClick }>
-      <i class="fas fa-star"/>
+      <i className="fas fa-star"/>
     </button>
   );
 };

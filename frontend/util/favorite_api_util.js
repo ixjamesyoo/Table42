@@ -11,3 +11,10 @@ export const deleteFavorite = restaurantId => {
     url: `/api/restaurants/${restaurantId}/favorites`
   });
 };
+
+export const fetchFavorites = userId => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/users/${userId}/favorites`
+  });
+};

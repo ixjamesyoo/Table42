@@ -4,7 +4,7 @@ import ReviewForm from "../review_form/create_review_container";
 import LoadingSpinner from "../loading_spinner/loading_spinner";
 import { dollarSigns } from "../restaurant_index/restaurant_index_helper";
 import ReviewIndex from "../review_index/review_index_container";
-
+import FavoriteButton from "../favorite_button/favorite_button_container";
 
 class RestaurantShow extends React.Component {
   constructor(props){
@@ -12,6 +12,9 @@ class RestaurantShow extends React.Component {
   }
 
   componentDidMount(){
+    if (this.props.currentUser) {
+      this.props.fetchFavorites(this.props.currentUser);
+    }
     this.props.fetchRestaurant();
     window.scrollTo(0,0);
   }
@@ -39,6 +42,9 @@ class RestaurantShow extends React.Component {
             </ul>
 
             <ul className="review-details">
+              <li id="show-favorite-container">
+                <FavoriteButton restaurant={ restaurant }/>
+              </li>
               <li>{`Overall: ${ restaurant.overall_rating }` }</li>
               <li>{`Food: ${ restaurant.food_rating }` }</li>
               <li>{`Value: ${ restaurant.value_rating }` }</li>
