@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
+import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_FAVORITE, REMOVE_FAVORITE } from "../actions/favorite_actions";
 
 export default (state = [], action) => {
@@ -12,6 +12,8 @@ export default (state = [], action) => {
       const copy = state.slice();
       const removedIdx = state.indexOf(action.favorite.restaurant_id);
       return copy.slice(0, removedIdx).concat(copy.slice(removedIdx+1));
+    case LOGOUT_CURRENT_USER:
+      return [];
     default:
       return state;
   }
