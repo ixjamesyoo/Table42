@@ -13,9 +13,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:reviews, :favorites, :reservations,
-      :reviewed_restaurants, :favorite_restaurants, :reserved_restaurants)
-      .find_by(params[:id])
+    @user = User.find_by(params[:id])
     render :show
   end
 
