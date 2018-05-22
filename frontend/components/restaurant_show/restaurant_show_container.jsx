@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchRestaurant } from '../../actions/restaurant_actions';
-import { openModal } from "../../actions/modal_actions";
-import { clearReviewConfirmation } from "../../actions/review_actions";
 import { fetchFavorites } from "../../actions/favorite_actions";
 import RestaurantShow from "./restaurant_show";
 
@@ -22,7 +20,5 @@ const mapDispatchToProps = (dispatch, { match }) => {
     fetchFavorites: (userId) => dispatch(fetchFavorites(userId))
   });
 };
-// openLogin: () => dispatch(openModal("login")),
-// clearReviewConfirmation: () => dispatch(clearReviewConfirmation()),
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantShow);

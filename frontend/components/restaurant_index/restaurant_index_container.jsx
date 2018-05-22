@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import RestaurantIndex from "./restaurant_index";
-import { searchRestaurants, loadingRestaurants } from '../../actions/restaurant_actions';
+import { searchRestaurants } from '../../actions/restaurant_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return ({

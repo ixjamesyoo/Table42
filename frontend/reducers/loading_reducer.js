@@ -6,12 +6,14 @@ import {
   LOADING_RESTAURANT,
   LOADING_RESTAURANTS
 } from "../actions/restaurant_actions";
+import { LOADING_PROFILE, RECEIVE_DETAILED_USER } from "../actions/session_actions";
 import { merge } from "lodash";
 
 
 const initialState = {
   indexLoading: false,
-  showLoading: false
+  showLoading: false,
+  profileLoading: false
 };
 
 export default (state = initialState, action) => {
@@ -27,6 +29,10 @@ export default (state = initialState, action) => {
     case RECEIVE_RESTAURANTS:
     case RECEIVE_SEARCH_ERRORS:
       return merge({}, state, { indexLoading: false});
+    case LOADING_PROFILE:
+      return merge({}, state, { profileLoading: true });
+    case RECEIVE_DETAILED_USER:
+      return merge({}, state, { profileLoading: false});
     default:
       return state;
   }

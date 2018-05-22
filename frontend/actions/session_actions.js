@@ -6,6 +6,11 @@ export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
 export const RECEIVE_DETAILED_USER = "RECEIVE_DETAILED_USER";
+export const LOADING_PROFILE = "LOADING_PROFILE";
+
+export const loadingProfile = () => ({
+  type: LOADING_PROFILE
+});
 
 export const receiveCurrentUser = ({ user, favorites }) => {
   return ({
@@ -71,6 +76,7 @@ export const logout = () => dispatch => {
 };
 
 export const fetchUserProfile = id => dispatch => {
+  dispatch(loadingProfile());
   return SessionAPIUtil.fetchUserProfile(id).then(payload => {
     dispatch(receiveDetailedUser(payload));
   });
