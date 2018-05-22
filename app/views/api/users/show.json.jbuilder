@@ -3,8 +3,9 @@ json.user do
 end
 
 json.restaurants do
-  all_restaurants = @user.reserved_restaurants + @user.reviewed_restaurants +
-    @user.favorite_restaurants
+  all_restaurants = @user.reserved_restaurants.includes(:cuisines) +
+    @user.reviewed_restaurants.includes(:cuisines) +
+    @user.favorite_restaurants.includes(:cuisines)
 
   all_restaurants.each do |restaurant|
     json.set! restaurant.id do
