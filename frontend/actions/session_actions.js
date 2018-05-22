@@ -5,11 +5,23 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
+export const RECEIVE_DETAILED_USER = "RECEIVE_DETAILED_USER";
 
 export const receiveCurrentUser = ({ user, favorites }) => {
   return ({
     type: RECEIVE_CURRENT_USER,
     user,
+    favorites
+  });
+};
+
+export const receiveDetailedUser = ({ user, restaurants, reservations, reviews, favorites }) => {
+  return ({
+    type: RECEIVE_DETAILED_USER,
+    user,
+    restaurants,
+    reservations,
+    reviews,
     favorites
   });
 };
@@ -56,4 +68,10 @@ export const logout = () => dispatch => {
   ), err => (
     dispatch(receiveSessionErrors(err.responseJSON))
   ));
+};
+
+export const fetchUserProfile = id => dispatch => {
+  return SessionAPIUtil.fetchUserProfile(id).then(payload => {
+    dispatch(receiveDetailedUser(payload));
+  });
 };

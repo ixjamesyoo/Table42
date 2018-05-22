@@ -23,7 +23,7 @@ class Api::UsersController < ApplicationController
   end
 
   def ensure_current_user_is_authorized
-    unless current_user == User.find_by(params[:id])
+    unless current_user == User.find_by(id: params[:id])
       render json: ["Unauthorized attempt to access information"], status: 403
     end
   end

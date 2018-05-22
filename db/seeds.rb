@@ -99,7 +99,7 @@ cities.each do |city|
 end
 
 User.all.each do |user|
-  100.times do
+  60.times do
     Review.create(
       user: user,
       restaurant: Restaurant.all.sample,
