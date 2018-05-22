@@ -7,7 +7,7 @@ import Footer from "./footer/footer";
 import HomePage from "./home_page/home_page";
 import RestaurantIndex from "./restaurant_index/restaurant_index_container";
 import RestaurantShow from "./restaurant_show/restaurant_show_container";
-import ProfilePage from "./profile_page/profile_page_container";
+// import ProfilePage from "./profile_page/profile_page_container";
 
 
 // complete homepage
@@ -15,9 +15,9 @@ import ProfilePage from "./profile_page/profile_page_container";
 // profile page  -- /my/profile  backend users :show with validation
 // my/profile/reviews  my/profile/reservations
 
+
+
 // <ProtectedRoute path="my/profile" component={ ProfilePage }/>
-
-
 
 const App = () => (
   <div>

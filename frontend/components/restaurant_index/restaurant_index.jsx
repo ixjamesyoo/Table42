@@ -40,12 +40,12 @@ export default class RestaurantIndex extends React.Component {
     const { restaurants, location, loading } = this.props;
 
     if (loading) return <LoadingSpinner/>;
-    if (!restaurants.restaurantIds || this.props.errors.length) return null;
+    if (!restaurants.restaurant_ids || this.props.errors.length) return null;
 
     let indexItems = [];
     if (location.hash) {
       const filterParams = parseHash(location.hash.slice(1));
-      const restIds = restaurants.restaurantIds;
+      const restIds = restaurants.restaurant_ids;
 
       for (let i = 0; i < restIds.length; i++) {
         const thisRest = restaurants[restIds[i]];
@@ -68,7 +68,7 @@ export default class RestaurantIndex extends React.Component {
       }
 
     } else {
-      indexItems = restaurants.restaurantIds.map( id => (
+      indexItems = restaurants.restaurant_ids.map( id => (
         <RestaurantIndexItem key={ id } restaurant={ restaurants[id] } />
       ));
     }

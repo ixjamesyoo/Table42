@@ -1,5 +1,7 @@
 import merge from "lodash/merge";
 import { RECEIVE_RESERVATION, REMOVE_RESERVATION } from "../actions/restaurant_actions";
+import { RECEIVE_DETAILED_USER } from "../actions/session_actions";
+
 
 export default (state = {}, action) => {
   Object.freeze(state);
@@ -10,10 +12,9 @@ export default (state = {}, action) => {
       const newState = merge({}, state);
       delete newState[action.reservation.id];
       return newState;
+    case RECEIVE_DETAILED_USER:
+      return action.reservations;
     default:
       return state;
-
-    // WHEN CREATING PROFILE PAGE NEED ACTION THAT WILL REPLACE STATE ENTIRELY WITH
-    // USERS RESERVATIONS
   }
 };

@@ -2,6 +2,6 @@
   json.set! restaurant.id do
     json.partial! 'api/restaurants/restaurant', restaurant: restaurant
   end
-
-  json.restaurantIds @restaurants.map(&:id)
 end
+
+json.restaurant_ids @restaurants.map(&:id)
