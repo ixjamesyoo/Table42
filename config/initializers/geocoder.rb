@@ -2,7 +2,8 @@ Geocoder.configure(
   lookup: :google,
   language: :en,
   use_https: true,
-  api_key: ENV["google_api_key"]
+  api_key: ENV["google_api_key"],
+  timeout: 15
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)
   # lookup: :google,            # name of geocoding service (symbol)
