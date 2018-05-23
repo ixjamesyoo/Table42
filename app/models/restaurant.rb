@@ -49,6 +49,9 @@ class Restaurant < ApplicationRecord
     associated_against: { cuisines: :name },
     using: :tsearch
 
+  geocoded_by :full_street_address
+  after_validation :geocode
+
   DINING_INTERVAL = 60
   CAPACITIES = [ 10, 20, 30, 40, 50, 75 ]
   OTIMES = [ "10:00:00", "11:00:00", "12:00:00", "13:00:00" ]
@@ -62,6 +65,10 @@ class Restaurant < ApplicationRecord
     "Come eat our food please.",
     "We are better than our competitors down the block."
   ]
+
+  def full_street_address
+    "#{address}, #{city}, #{state}"
+  end
 
   def self.random_phone_number
     phone_num = ""
@@ -97,7 +104,6 @@ class Restaurant < ApplicationRecord
     time
   end
 
-
   def cleanup_zipcode
     self.zipcode ||= 12345
   end
@@ -125,5 +131,4 @@ class Restaurant < ApplicationRecord
   def value_rating
     self.reviews.average(:value_rating).round(1)
   end
-
 end
