@@ -59,3 +59,15 @@
   margin-top: 5px;
   display:block;
 }
+
+.profile-link {
+  font-size: 16px;
+  margin: 5px 10px 0 13px;
+  display:block;
+  color: #237b98;
+}
+
+.profile-link:hover {
+  color: #1c657d;
+  text-decoration: underline;
+}

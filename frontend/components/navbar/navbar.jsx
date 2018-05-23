@@ -27,6 +27,7 @@ export default ({ loggedIn, currentUser, openModal, login, logout, history }) =>
     buttonDiv = (
       <div className="navbar-button-container">
         <h2 className="navbar-greeting">Hi, { currentUser.fname }</h2>
+        <Link className="profile-link" to="/my/profile">My Profile</Link>
         <button className="navbar-button logout"
           onClick={ handleLogout }>Log Out</button>
       </div>

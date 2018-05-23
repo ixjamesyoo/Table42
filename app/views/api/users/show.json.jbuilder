@@ -1,5 +1,6 @@
 json.user do
   json.partial! "api/users/user", user: @user
+  json.fetched true 
 end
 
 json.restaurants do

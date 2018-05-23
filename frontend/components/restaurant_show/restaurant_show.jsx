@@ -7,10 +7,6 @@ import ReviewIndex from "../review_index/review_index_container";
 import FavoriteButton from "../favorite_button/favorite_button_container";
 
 class RestaurantShow extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
   componentDidMount(){
     if (this.props.currentUser) {
       this.props.fetchFavorites(this.props.currentUser);
