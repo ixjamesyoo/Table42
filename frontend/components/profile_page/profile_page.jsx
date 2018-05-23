@@ -9,9 +9,13 @@ export default class ProfilePage extends React.Component {
   }
 
   profileReviews() {
-    const { reviews, userId } = this.props;
+    const { reviews, userId, restaurants } = this.props;
+
     return reviews.review_ids.map(id => (
-      <ReviewIndexItem key={id} review={ reviews[id] } currentUserId={ userId }/>
+      <div key={id}>
+        <h3>{`Regarding ${restaurants[reviews[id]["restaurant_id"]]["name"]}`}</h3>
+        <ReviewIndexItem review={ reviews[id] } currentUserId={ userId }/>
+      </div>
     ));
 
   }
