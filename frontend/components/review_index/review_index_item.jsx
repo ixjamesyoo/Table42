@@ -2,6 +2,10 @@ import React from "react";
 
 export default ({ review, currentUserId }) => {
 
+  // const editButton = () => {
+  //   return currentUserId === review.user_id ?
+  //     <button>Click Me</button> : null;
+  // };
 
   return (
     <div className="review-item-container">
