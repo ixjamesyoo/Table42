@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import LoadingSpinner from "../loading_spinner/loading_spinner";
 import ReviewIndexItem from "../review_index/review_index_item";
@@ -14,7 +15,9 @@ export default class ProfilePage extends React.Component {
     const { reviews, userId, restaurants } = this.props;
     return reviews.review_ids.map(id => (
       <div key={id}>
-        <h3 className="review-title">{`Regarding ${restaurants[reviews[id]["restaurant_id"]]["name"]}`}</h3>
+        <Link to={ `/restaurants/${reviews[id].restaurant_id}` }>
+          <h3 className="review-title"><span>{ `${restaurants[reviews[id]["restaurant_id"]]["name"]}`}</span></h3>
+        </Link>
         <ReviewIndexItem review={ reviews[id] } currentUserId={ userId }/>
       </div>
     ));
@@ -120,7 +123,7 @@ export default class ProfilePage extends React.Component {
         </div>
 
         <div className="spacer" id="reviews">&nbsp;</div>
-        <div className="content">
+        <div className="content" id="profile-reviews">
           <h2>My Reviews</h2>
           { this.profileReviews().length ?
             this.profileReviews() :
