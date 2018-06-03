@@ -1,2 +1,2 @@
-json.extract! reservation, :id, :user_id, :restaurant_id, :table_size
-json.start_datetime reservation.parsed_start_datetime
+json.extract! reservation, :id, :user_id, :restaurant_id, :table_size, :start_datetime
+json.parsed_datetime reservation.parsed_start_datetime

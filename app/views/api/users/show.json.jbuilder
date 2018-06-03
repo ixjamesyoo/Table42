@@ -1,6 +1,6 @@
 json.user do
   json.partial! "api/users/user", user: @user
-  json.fetched true 
+  json.fetched true
 end
 
 json.restaurants do
@@ -14,7 +14,7 @@ json.restaurants do
     end
   end
 
-  json.restaurant_ids all_restaurants.map(&:id)
+  json.profile_restaurant_ids all_restaurants.map(&:id)
 end
 
 json.reservations do
@@ -24,7 +24,7 @@ json.reservations do
     end
   end
 
-  json.reservation_ids @user.reservations.map(&:id)
+  json.reservation_ids @user.reservations.order(:start_datetime).map(&:id)
 end
 
 json.reviews do
