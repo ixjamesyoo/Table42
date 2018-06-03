@@ -12,8 +12,7 @@ export default class ProfilePage extends React.Component {
 
   profileReviews() {
     const { reviews, userId, restaurants } = this.props;
-
-    if (!reviews.review_ids.length) return <p class="null-profile-text">No reviews posted yet!</p>;
+    // if (!reviews.review_ids.length) return <p class="null-profile-text">No reviews posted yet!</p>;
 
     return reviews.review_ids.map(id => (
       <div key={id}>
@@ -25,7 +24,7 @@ export default class ProfilePage extends React.Component {
 
   profileFavorites(){
     const { restaurants, favorites } = this.props;
-    if (!favorites.length) return <p class="null-profile-text">No favorites yet!</p>;
+    // if (!favorites.length) return <p class="null-profile-text">No favorites yet!</p>;
 
     return favorites.map(id => (
       <RestaurantIndexItem key={id} restaurant={ restaurants[id] }/>
@@ -43,7 +42,7 @@ export default class ProfilePage extends React.Component {
       }
     });
 
-    if (!past.length) return <p class="null-profile-text">No past reservations!</p>;
+    // if (!past.length) return <p class="null-profile-text">No past reservations!</p>;
 
     return past.map(id => (
       <div key={id}>
@@ -64,7 +63,7 @@ export default class ProfilePage extends React.Component {
       }
     });
 
-    if (!upcoming.length) return <p class="null-profile-text">No upcoming reservations!</p>;
+    // if (!upcoming.length) return <p class="null-profile-text">No upcoming reservations!</p>;
 
     return upcoming.map(id => (
       <div key={id}>
@@ -88,39 +87,49 @@ export default class ProfilePage extends React.Component {
       <div className="profile-master">
         <nav className="profile-overview">
           <h2>{ currentUser.full_name }</h2>
-          <HashLink to="/my/profile#upcoming-reservations">
-            <p>{ `${this.upcomingReservations().length} Upcoming Reservations` }</p>
-          </HashLink>
-          <HashLink to="/my/profile#past-reservations">
-            <p>{ `${this.pastReservations().length} Past Reservations` }</p>
-          </HashLink>
-          <HashLink to="/my/profile#favorites">
-            <p>{ `${favorites.length} Favorites` }</p>
-          </HashLink>
-          <HashLink to="/my/profile#reviews">
-            <p>{ `${reviews.review_ids.length} Reviews` }</p>
-          </HashLink>
+          <section className="profile-links">
+            <HashLink to="/my/profile#upcoming-reservations">
+              <p>{ `${this.upcomingReservations().length} Upcoming Reservations` }</p>
+            </HashLink>
+            <HashLink to="/my/profile#past-reservations">
+              <p>{ `${this.pastReservations().length} Past Reservations` }</p>
+            </HashLink>
+            <HashLink to="/my/profile#favorites">
+              <p>{ `${favorites.length} Favorites` }</p>
+            </HashLink>
+            <HashLink to="/my/profile#reviews">
+              <p>{ `${reviews.review_ids.length} Reviews` }</p>
+            </HashLink>
+          </section>
         </nav>
 
 
         <div id="upcoming-reservations">
           <h2>Upcoming Reservatons</h2>
-          { this.upcomingReservations() }
+          { this.upcomingReservations().length ?
+            this.upcomingReservations() :
+            <p className="null-profile-text">No upcoming reservations!</p> }
         </div>
 
         <div id="past-reservations">
           <h2>Past Reservations</h2>
-          { this.pastReservations() }
+          { this.pastReservations().length ?
+            this.pastReservations() :
+            <p className="null-profile-text">No past reservations!</p> }
         </div>
 
         <div id="favorites">
           <h2>My Favorites</h2>
-          { this.profileFavorites() }
+          { this.profileFavorites().length ?
+            this.profileFavorites() :
+            <p className="null-profile-text">No favorites yet!</p> }
         </div>
 
         <div id="reviews">
           <h2>My Reviews</h2>
-          { this.profileReviews() }
+          { this.profileReviews().length ?
+            this.profileReviews() :
+            <p className="null-profile-text">No reviews posted yet!</p> }
         </div>
       </div>
     );
