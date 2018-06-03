@@ -12,8 +12,6 @@ export default class ProfilePage extends React.Component {
 
   profileReviews() {
     const { reviews, userId, restaurants } = this.props;
-    // if (!reviews.review_ids.length) return <p class="null-profile-text">No reviews posted yet!</p>;
-
     return reviews.review_ids.map(id => (
       <div key={id}>
         <h3 className="review-title">{`Regarding ${restaurants[reviews[id]["restaurant_id"]]["name"]}`}</h3>
@@ -24,8 +22,6 @@ export default class ProfilePage extends React.Component {
 
   profileFavorites(){
     const { restaurants, favorites } = this.props;
-    // if (!favorites.length) return <p class="null-profile-text">No favorites yet!</p>;
-
     return favorites.map(id => (
       <RestaurantIndexItem key={id} restaurant={ restaurants[id] }/>
     ));
@@ -41,8 +37,6 @@ export default class ProfilePage extends React.Component {
         past.push(id);
       }
     });
-
-    // if (!past.length) return <p class="null-profile-text">No past reservations!</p>;
 
     return past.map(id => (
       <div key={id}>
@@ -63,8 +57,6 @@ export default class ProfilePage extends React.Component {
       }
     });
 
-    // if (!upcoming.length) return <p class="null-profile-text">No upcoming reservations!</p>;
-
     return upcoming.map(id => (
       <div key={id}>
         <h3 className="reservation-title">{`${reservations[id].parsed_datetime}`}</h3>
@@ -81,7 +73,7 @@ export default class ProfilePage extends React.Component {
         <LoadingSpinner/>
       </div>
     );
-    if (!currentUser || !currentUser.fetched || !restaurants.profile_restaurant_ids) return null;
+    if (!currentUser || !restaurants.profile_restaurant_ids) return null;
 
     return (
       <div className="profile-master">
@@ -104,28 +96,31 @@ export default class ProfilePage extends React.Component {
         </nav>
 
 
-        <div id="upcoming-reservations">
-          <h2>Upcoming Reservatons</h2>
+        <div id="upcoming-reservations" className="content">
+          <h2>Upcoming Reservations</h2>
           { this.upcomingReservations().length ?
             this.upcomingReservations() :
             <p className="null-profile-text">No upcoming reservations!</p> }
         </div>
 
-        <div id="past-reservations">
+        <div className="spacer" id="past-reservations">&nbsp;</div>
+        <div className="content">
           <h2>Past Reservations</h2>
           { this.pastReservations().length ?
             this.pastReservations() :
             <p className="null-profile-text">No past reservations!</p> }
         </div>
 
-        <div id="favorites">
+        <div className="spacer" id="favorites">&nbsp;</div>
+        <div className="content">
           <h2>My Favorites</h2>
           { this.profileFavorites().length ?
             this.profileFavorites() :
             <p className="null-profile-text">No favorites yet!</p> }
         </div>
 
-        <div id="reviews">
+        <div className="spacer" id="reviews">&nbsp;</div>
+        <div className="content">
           <h2>My Reviews</h2>
           { this.profileReviews().length ?
             this.profileReviews() :
