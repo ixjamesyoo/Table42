@@ -66,7 +66,7 @@ class Reservation < ApplicationRecord
         SELECT SUM(reservations.table_size) AS diners
         FROM reservations
         JOIN restaurants ON restaurants.id = reservations.restaurant_id
-        WHERE reservations.end_datetime > ?
+        WHERE reservations.start_datetime <= ?
         AND reservations.start_datetime > ?
       SQL
 
@@ -90,15 +90,3 @@ class Reservation < ApplicationRecord
   end
 
 end
-
-# query = ActiveRecord::Base.send(:sanitize_sql_array, [<<-SQL, self.start_datetime, self.end_datetime])
-#   SELECT reservations1.start_datetime, SUM(reservations2.table_size) AS diners
-#   FROM reservations AS reservations1
-#   JOIN restaurants ON restaurants.id = reservations1.restaurant_id
-#   JOIN reservations AS reservations2 ON restaurants.id = reservations2.restaurant_id
-#   WHERE reservations1.start_datetime >= ?
-#     AND reservations1.start_datetime <= ?
-#     AND reservations2.start_datetime >= (reservations1.start_datetime - INTERVAL '59 minutes')
-#     AND reservations2.start_datetime <= (reservations1.start_datetime)
-#   GROUP BY reservations1.start_datetime
-# SQL
