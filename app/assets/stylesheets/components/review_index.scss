@@ -33,6 +33,22 @@
   border-radius: 5px;
 }
 
+.review-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-item-delete-button {
+  font-size: 16px;
+  color: #da3743;
+  margin-bottom: 3px;
+}
+
+.review-item-delete-button:hover {
+  color: #c2242e;
+}
+
 .review-item-author {
   font-size: 17px;
   font-weight: 550;

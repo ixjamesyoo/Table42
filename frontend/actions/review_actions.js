@@ -30,6 +30,7 @@ export const updateReview = review => dispatch => {
 
 export const deleteReview = id => dispatch => {
   return ReviewApiUtil.deleteReview(id).then(review => {
+    dispatch(clearReviewConfirmation());
     dispatch(removeReview(review));
   });
 };

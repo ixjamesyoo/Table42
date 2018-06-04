@@ -1,15 +1,30 @@
 import React from "react";
 
-export default ({ review, currentUserId }) => {
+export default ({ review, currentUserId, deleteReview }) => {
 
   // const editButton = () => {
   //   return currentUserId === review.user_id ?
   //     <button>Click Me</button> : null;
   // };
+  const handleDelete = (id) => {
+    return () => deleteReview(id);
+  };
+
+  const deleteButton = () => {
+    return currentUserId === review.user_id ?
+      <button
+        onClick={ handleDelete(review.id) }
+        className="review-item-delete-button">
+        Delete Review
+      </button> : null;
+  };
 
   return (
     <div className="review-item-container">
-      <p className="review-item-author">{ `${review.author} says:`}</p>
+      <div className="review-item-top">
+        <p className="review-item-author">{ `${review.author} says:`}</p>
+        { deleteButton() }
+      </div>
       <div className="review-item-ratings">
         <li>{`Overall: ${ review.overall_rating }` }</li>
         <li>{`Food: ${ review.food_rating }` }</li>

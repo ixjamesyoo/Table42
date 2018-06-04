@@ -51,11 +51,12 @@ export default class ReviewIndex extends React.Component {
   }
 
   reviewItems(){
-    const { reviews, currentUserId, restaurant } = this.props;
+    const { reviews, currentUserId, deleteReview } = this.props;
     return reviews.review_ids.map(id => (
       <ReviewIndexItem id={ id } key={ id }
         review={ reviews[id] }
-        currentUserId={ currentUserId }/>
+        currentUserId={ currentUserId }
+        deleteReview={ deleteReview }/>
     ));
   }
 
