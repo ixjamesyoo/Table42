@@ -109,7 +109,7 @@ export default class ProfilePage extends React.Component {
         <LoadingSpinner/>
       </div>
     );
-    if (!currentUser || !restaurants.profile_restaurant_ids) return null;
+    if (!currentUser || !currentUser.fetched || !restaurants.profile_restaurant_ids) return null;
 
     return (
       <div className="profile-master">
