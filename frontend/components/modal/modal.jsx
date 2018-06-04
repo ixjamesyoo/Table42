@@ -28,5 +28,3 @@ export default ({ modal, closeModal }) => {
       );
   }
 };
-
-// can refactor this to a case statement and return a review modal as well

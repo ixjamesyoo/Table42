@@ -35,7 +35,7 @@ export default class ReviewForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { currentUser, restaurant, processForm, closeModal } = this.props;
+    const { currentUser, restaurant, processForm } = this.props;
     const review = merge({}, this.state, {
       user_id: currentUser.id,
       restaurant_id: restaurant.id
