@@ -21,7 +21,7 @@
   border: 1px solid rgba(0,0,0,.12);
 
   h2 {
-    font-size: 21px;
+    font-size: 22px;
     margin-left: 10px;
   }
 }
@@ -50,10 +50,14 @@
 
   h2 {
     color: #237b98;
-    font-size: 22px;
+    font-size: 23px;
     padding-top: 13px;
     margin-bottom: 10px;
   }
+}
+
+.content:first-of-type {
+  margin-top: 20px;
 }
 
 .spacer {
@@ -61,8 +65,8 @@
   background: #f7f7f7;
 }
 
-.reservation-title, .review-title {
-  font-size: 20px;
+.review-title, .past-reservation-title {
+  font-size: 21px;
   margin: 10px 0;
   font-weight: 570;
 
@@ -71,9 +75,31 @@
   }
 
   span:hover {
-    // text-decoration: underline;
     color: #c2242e;
   }
+}
+
+.upcoming-reservation-title {
+  font-size: 21px;
+}
+
+.upcoming-reservation-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.delete-reservation-button {
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  background: #da3743;
+  padding: 4px 7px;
+}
+
+.delete-reservation-button:hover {
+  background: #c2242e;
 }
 
 #profile-reviews > div {
@@ -81,4 +107,13 @@
   margin: 20px auto;
   padding-bottom: 25px;
   border-bottom: 1px solid #ccc;
+}
+
+#profile-reviews {
+  margin-bottom: 35px;
+}
+
+.null-profile-text {
+  text-align: center;
+  font-size: 18px;
 }

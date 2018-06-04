@@ -29,7 +29,7 @@ class Api::ReservationsController < ApplicationController
   end
 
   def ensure_current_user_is_authorized
-    reservation = Reservation.find_by(params[:id])
+    reservation = Reservation.find_by(id: params[:id])
 
     unless current_user == reservation.user
       render json: ["Unauthorized attempt to delete information"], status: 403

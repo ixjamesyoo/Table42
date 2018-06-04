@@ -11,6 +11,12 @@ export default class ProfilePage extends React.Component {
     fetchUserProfile(userId);
   }
 
+  handleDeleteReservation(id) {
+    const { deleteReservation } = this.props;
+
+    return () => deleteReservation(id);
+  }
+
   profileReviews() {
     const { reviews, userId, restaurants } = this.props;
     return reviews.review_ids.map(id => (
@@ -43,7 +49,7 @@ export default class ProfilePage extends React.Component {
 
     return past.map(id => (
       <div key={id}>
-        <h3 className="reservation-title">{`${reservations[id].parsed_datetime}`}</h3>
+        <h3 className="past-reservation-title">{`${reservations[id].parsed_datetime}`}</h3>
         <RestaurantIndexItem restaurant={ restaurants[reservations[id].restaurant_id] }/>
       </div>
     ));
@@ -62,7 +68,13 @@ export default class ProfilePage extends React.Component {
 
     return upcoming.map(id => (
       <div key={id}>
-        <h3 className="reservation-title">{`${reservations[id].parsed_datetime}`}</h3>
+        <div className="upcoming-reservation-top">
+          <h3 className="upcoming-reservation-title">{`${reservations[id].parsed_datetime}`}</h3>
+          <button className="delete-reservation-button"
+            onClick={ this.handleDeleteReservation(id) }>
+            Delete Reservation
+          </button>
+        </div>
         <RestaurantIndexItem restaurant={ restaurants[reservations[id].restaurant_id] }/>
       </div>
     ));
