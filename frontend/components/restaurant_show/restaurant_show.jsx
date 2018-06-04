@@ -5,6 +5,7 @@ import LoadingSpinner from "../loading_spinner/loading_spinner";
 import { dollarSigns } from "../restaurant_index/restaurant_index_helper";
 import ReviewIndex from "../review_index/review_index_container";
 import FavoriteButton from "../favorite_button/favorite_button_container";
+import RestaurantMap from "./restaurant_show_map";
 
 class RestaurantShow extends React.Component {
   componentDidMount(){
@@ -52,6 +53,7 @@ class RestaurantShow extends React.Component {
           <p className="show-blurb">{ restaurant.description }</p>
         </div>
 
+        <RestaurantMap restaurant={ restaurant }/>
         <ReviewIndex/>
       </div>
     );
