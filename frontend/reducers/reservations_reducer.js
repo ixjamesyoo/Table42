@@ -12,6 +12,7 @@ export default (state = {}, action) => {
       delete newState[action.reservation.id];
       const copyIds = newState.reservation_ids.slice();
       const removedIdx = copyIds.indexOf(action.reservation.id);
+      delete newState.reservation_ids;
       return merge(newState, {
         reservation_ids: copyIds.slice(0, removedIdx).concat(copyIds.slice(removedIdx+1))
       });

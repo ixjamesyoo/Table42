@@ -16,7 +16,12 @@ export default (state = {}, action) => {
     case REMOVE_REVIEW:
       const newState = merge({}, state);
       delete newState[action.review.id];
-      return newState;
+      const copyIds = newState.review_ids.slice();
+      const removedIdx = copyIds.indexOf(action.review.id);
+      delete newState.review_ids;
+      return merge(newState, {
+        review_ids: copyIds.slice(0, removedIdx).concat(copyIds.slice(removedIdx+1))
+      });
     case RECEIVE_RESTAURANT:
     case RECEIVE_DETAILED_USER:
       return action.reviews;

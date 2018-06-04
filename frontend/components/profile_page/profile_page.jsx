@@ -22,6 +22,11 @@ export default class ProfilePage extends React.Component {
     return () => editReview(id);
   }
 
+  handleDeleteReview(id) {
+    const { deleteReview } = this.props;
+    return () => deleteReview(id);
+  }
+
   profileReviews() {
     const { reviews, userId, restaurants } = this.props;
     return reviews.review_ids.map(id => (
@@ -30,6 +35,7 @@ export default class ProfilePage extends React.Component {
           <h3 className="review-title"><span>{ `${restaurants[reviews[id]["restaurant_id"]]["name"]}`}</span></h3>
         </Link>
         <button onClick={ this.handleEditReview(id) }>Edit Review</button>
+        <button onClick={ this.handleDeleteReview(id) }>Delete Review</button>
         <div className="profile-review-item">
           <ul className="profile-review-ratings">
             <li>{`Overall: ${ reviews[id].overall_rating }` }</li>
