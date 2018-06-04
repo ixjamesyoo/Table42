@@ -7,7 +7,8 @@ export default (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_REVIEW:
-      const newReviewIds = state.review_ids.concat([action.review.id]);
+      const newReviewIds = state.review_ids.includes(action.review.id) ?
+        state.review_ids : state.review_ids.concat([action.review.id]);
       return merge({}, state, {
         [action.review.id]: action.review,
         review_ids: newReviewIds

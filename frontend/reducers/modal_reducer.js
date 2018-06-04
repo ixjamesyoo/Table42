@@ -1,12 +1,18 @@
 import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
+import merge from "lodash/merge";
 
-export default (state = null, action) => {
+const defaultState = {
+  type: null,
+  reviewId: null
+};
+
+export default (state = defaultState, action) => {
   Object.freeze(state);
   switch (action.type) {
     case OPEN_MODAL:
-      return action.modal;
+      return merge({}, state, { type: action.modal, reviewId: action.reviewId });
     case CLOSE_MODAL:
-      return null;
+      return defaultState;
     default:
       return state;
   }

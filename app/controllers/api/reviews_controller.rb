@@ -42,7 +42,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def ensure_current_user_is_authorized
-    review = Review.find_by(params[:id])
+    review = Review.find_by(id: params[:id])
 
     unless current_user == review.user
       render json: ["Unauthorized attempt to alter information"], status: 403

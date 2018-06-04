@@ -4,18 +4,7 @@ import { merge } from "lodash";
 export default class ReviewForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      overall_rating: 0,
-      food_rating: 0,
-      service_rating: 0,
-      ambience_rating: 0,
-      value_rating: 0,
-      body: "",
-      recommended: 0,
-
-      hovering: null,
-      hoverValue: null
-    };
+    this.state = this.initialState();
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -24,6 +13,39 @@ export default class ReviewForm extends React.Component {
 
   componentWillUnmount() {
     this.props.clearReviewErrors();
+  }
+
+  initialState() {
+    if (this.props.formType === "create") {
+      return {
+        overall_rating: 0,
+        food_rating: 0,
+        service_rating: 0,
+        ambience_rating: 0,
+        value_rating: 0,
+        body: "",
+        recommended: 0,
+
+        hovering: null,
+        hoverValue: null
+      };
+    } else {
+      const review = this.props.review;
+      return {
+        id: review.id,
+        overall_rating: review.overall_rating,
+        food_rating: review.food_rating,
+        service_rating: review.service_rating,
+        ambience_rating: review.ambience_rating,
+        value_rating: review.value_rating,
+        body: review.body,
+        recommended: review.recommended,
+
+        hovering: null,
+        hoverValue: null
+      };
+
+    }
   }
 
   updateField(field) {

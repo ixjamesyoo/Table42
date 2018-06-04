@@ -17,6 +17,11 @@ export default class ProfilePage extends React.Component {
     return () => deleteReservation(id);
   }
 
+  handleEditReview(id) {
+    const { editReview } = this.props;
+    return () => editReview(id);
+  }
+
   profileReviews() {
     const { reviews, userId, restaurants } = this.props;
     return reviews.review_ids.map(id => (
@@ -24,6 +29,7 @@ export default class ProfilePage extends React.Component {
         <Link to={ `/restaurants/${reviews[id].restaurant_id}` }>
           <h3 className="review-title"><span>{ `${restaurants[reviews[id]["restaurant_id"]]["name"]}`}</span></h3>
         </Link>
+        <button onClick={ this.handleEditReview(id) }>Edit Review</button>
         <div className="profile-review-item">
           <ul className="profile-review-ratings">
             <li>{`Overall: ${ reviews[id].overall_rating }` }</li>

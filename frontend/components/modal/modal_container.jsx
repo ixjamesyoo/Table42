@@ -3,9 +3,10 @@ import { withRouter } from "react-router-dom";
 import { closeModal } from "../../actions/modal_actions";
 import Modal from "./modal.jsx";
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ ui }) => {
   return {
-    modal: state.ui.modal
+    modal: ui.modal.type,
+    reviewId: ui.modal.reviewId
   };
 };
 
