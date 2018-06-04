@@ -20,6 +20,7 @@ export const createReview = review => dispatch => {
 
 export const updateReview = review => dispatch => {
   return ReviewApiUtil.updateReview(review).then(newReview => {
+      dispatch(receiveReviewConfirmation());
       dispatch(closeModal());
       dispatch(receiveReview(newReview));
   }, err => {

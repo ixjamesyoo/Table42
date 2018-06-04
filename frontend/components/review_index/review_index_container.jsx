@@ -18,6 +18,7 @@ const mapStateToProps = ({ entities, session, ui }, { match }) => {
 const mapDispatchToProps = (dispatch, { match }) => {
   return ({
     openCreateReview: () => dispatch(openModal("create review")),
+    openEditReview: (id) => dispatch(openModal("edit review", id)),  
     openLogin: () => dispatch(openModal("login")),
     clearReviewConfirmation: () => dispatch(clearReviewConfirmation()),
   });

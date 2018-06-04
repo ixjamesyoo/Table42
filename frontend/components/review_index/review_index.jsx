@@ -9,12 +9,35 @@ export default class ReviewIndex extends React.Component {
 
   handleReview(e){
     e.preventDefault();
-    if (this.props.loggedIn){
-      this.props.clearReviewConfirmation();
-      this.props.openCreateReview();
-    } else {
+
+    if (!this.props.loggedIn) {
       this.props.openLogin();
+    } else {
+      const { reviews, currentUserId } = this.props;
+      const reviewId = reviews.review_ids.find(id => currentUserId === reviews[id].user_id);
+
+      if (reviewId){
+        this.props.clearReviewConfirmation();
+        this.props.openEditReview(reviewId);
+      } else {
+        this.props.clearReviewConfirmation();
+        this.props.openCreateReview();
+      }
     }
+  }
+
+  reviewButton() {
+    const { reviews, currentUserId } = this.props;
+
+    const buttonText = reviews.review_ids.some(id => {
+      return currentUserId === reviews[id].user_id;
+    }) ? "Edit Review!" : "Write a Review!";
+
+    return (
+      <button className="write-review-button" onClick={ this.handleReview }>
+        { buttonText }
+      </button>
+    );
   }
 
   displayReviewConfirmation() {
@@ -44,9 +67,7 @@ export default class ReviewIndex extends React.Component {
         <header>
           <h3 className="review-master-banner">{ `${restaurant.name} Ratings and Reviews` }</h3>
           { this.displayReviewConfirmation() }
-          <button className="write-review-button" onClick={ this.handleReview }>
-            Write a Review!
-          </button>
+          { this.reviewButton() }
         </header>
 
         <ul className="reviews-container">
