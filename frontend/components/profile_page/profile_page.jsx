@@ -24,7 +24,16 @@ export default class ProfilePage extends React.Component {
         <Link to={ `/restaurants/${reviews[id].restaurant_id}` }>
           <h3 className="review-title"><span>{ `${restaurants[reviews[id]["restaurant_id"]]["name"]}`}</span></h3>
         </Link>
-        <ReviewIndexItem review={ reviews[id] } currentUserId={ userId }/>
+        <div className="profile-review-item">
+          <ul className="profile-review-ratings">
+            <li>{`Overall: ${ reviews[id].overall_rating }` }</li>
+            <li>{`Food: ${ reviews[id].food_rating }` }</li>
+            <li>{`Value: ${ reviews[id].value_rating }` }</li>
+            <li>{`Service: ${ reviews[id].service_rating }` }</li>
+            <li>{`Ambience: ${ reviews[id].ambience_rating }` }</li>
+          </ul>
+          <p className="profile-review-body">{ reviews[id].body }</p>
+        </div>
       </div>
     ));
   }
@@ -49,7 +58,10 @@ export default class ProfilePage extends React.Component {
 
     return past.map(id => (
       <div key={id}>
-        <h3 className="past-reservation-title">{`${reservations[id].parsed_datetime}`}</h3>
+        <h3 className="past-reservation-title">
+          {`${reservations[id].parsed_datetime}`}
+        </h3>
+        <p className="past-table">{`Table for ${reservations[id].table_size}`}</p>
         <RestaurantIndexItem restaurant={ restaurants[reservations[id].restaurant_id] }/>
       </div>
     ));
@@ -69,12 +81,15 @@ export default class ProfilePage extends React.Component {
     return upcoming.map(id => (
       <div key={id}>
         <div className="upcoming-reservation-top">
-          <h3 className="upcoming-reservation-title">{`${reservations[id].parsed_datetime}`}</h3>
+          <h3 className="upcoming-reservation-title">
+            {`${reservations[id].parsed_datetime}`}
+          </h3>
           <button className="delete-reservation-button"
             onClick={ this.handleDeleteReservation(id) }>
             Delete Reservation
           </button>
         </div>
+        <strong>{`Table for ${reservations[id].table_size}`}</strong>
         <RestaurantIndexItem restaurant={ restaurants[reservations[id].restaurant_id] }/>
       </div>
     ));

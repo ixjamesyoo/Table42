@@ -9,7 +9,7 @@ export default () => {
         </div>
         <ul className="site-footer-links">
           <li><a href="https://github.com/ixjamesyoo" target="_blank"><i className="fab fa-github"></i><span>Github</span></a></li>
-          <li><a href="https://www.linkedin.com/in/james-yoo-2a839615b/" target="_blank"><i className="fab fa-linkedin"></i><span>LinkedIn</span></a></li>
+          <li><a href="https://www.linkedin.com/in/jameshkyoo/" target="_blank"><i className="fab fa-linkedin"></i><span>LinkedIn</span></a></li>
           <li><a href="https://github.com/ixjamesyoo/Table42" target="_blank"><i className="far fa-file-alt" target="_blank"></i><span>README</span></a></li>
         </ul>
       </div>
