@@ -13,7 +13,6 @@ export const fetchRestaurants = () => {
 };
 
 export const searchRestaurants = (query) => {
-  // query is an object, will need to merge with hash object
   return $.ajax({
     method: "GET",
     url: "/api/restaurants",

@@ -22,7 +22,6 @@ export default ({ loggedIn, currentUser, openModal, login, logout, history }) =>
 
   let buttonDiv;
   if (loggedIn) {
-    // once user profile page is created add Link here
 
     buttonDiv = (
       <div className="navbar-button-container">

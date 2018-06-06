@@ -17,7 +17,6 @@ export default () => {
 
   const cityLis = cities.map( city => {
 
-    // + cityClass(city)  ADD THIS BACK TO LI CLASS NAME
     return (
       <Link to={ url(city) } key={ city } className="position-relative-parent">
         <li className={ "featured-city-item " }>

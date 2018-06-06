@@ -8,11 +8,6 @@ export const CLEAR_SEARCH_ERRORS = "CLEAR_SEARCH_ERRORS";
 export const LOADING_RESTAURANT = "LOADING_RESTAURANT";
 export const LOADING_RESTAURANTS = "LOADING_RESTAURANTS";
 
-// WILL NEED:
-// 1. UPDATE/DESTROY RESTAURANTS, removeRestaurant (from redux state)
-// 2.POSSIBLY GET RID OF fetchRestaurants ( will always need to search by something right?)
-// 3. UPDATE receiveRestaurant/receiveRestaurants, along with reducers once reviews, etc implemented
-// will receive payload information instead of just restaurant
 export const loadingRestaurant = () => ({
   type: LOADING_RESTAURANT
 });
@@ -36,7 +31,6 @@ export const receiveRestaurants = (restaurants) => {
   });
 };
 
-// errors when creating a restaurant !
 export const receiveRestaurantErrors = errors => {
   return  ({
     type: RECEIVE_RESTAURANT_ERRORS,
@@ -44,7 +38,6 @@ export const receiveRestaurantErrors = errors => {
   });
 };
 
-// errors when searching
 export const receiveSearchErrors = errors => {
   return  ({
     type: RECEIVE_SEARCH_ERRORS,

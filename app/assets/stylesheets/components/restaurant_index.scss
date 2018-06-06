@@ -42,8 +42,6 @@
 
 .search-error-text {
   padding-left: 150px;
-  // margin: auto;
-  // text-align: center;
   color: #c70002;
 }
 
@@ -71,7 +69,6 @@
 }
 
 .restaurant-name {
-  // color: #237b98;
   color: #da3743;
   font-size: 22px;
   line-height: 18px;
@@ -79,7 +76,6 @@
 }
 
 .restaurant-name:hover {
-  // color: #1c657d;
   color: #c2242e;
 }
 
@@ -114,7 +110,6 @@
   }
 }
 
-// this is somewhat similar to what i will eventually want
 .search-result-reservation-section {
   margin-top: 10px;
   display: flex;

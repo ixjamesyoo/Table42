@@ -3,13 +3,8 @@
 }
 
 .home-page-components {
-  // width: 80%;
   width: 900px;
   margin: auto;
-  // display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   position: relative;
   top: -100px;
 }
@@ -62,7 +57,6 @@
 .restaurant-search-submit {
   background: #da3743;
   height: 42px;
-  // border-radius: 3px;
   padding: 4px 12px;
   color: white;
   border: 1px 1px 1px 0 solid #eee;

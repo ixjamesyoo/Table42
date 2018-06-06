@@ -12,7 +12,6 @@ const mapStateToProps = ({ entities, errors, session, ui }, { match }) => {
     currentUser: session.currentUser
   });
 };
-// reviewConfirmation: ui.review.confirmation,
 
 const mapDispatchToProps = (dispatch, { match }) => {
   return ({

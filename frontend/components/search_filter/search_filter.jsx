@@ -36,7 +36,6 @@ class SearchFilter extends React.Component {
   }
 
   handleChange(e) {
-    // console.log(e.currentTarget);
     const { location, filterType, history, choicesArray } = this.props;
 
     const oldCheckedInputs = this.state.checkedInputs.slice();

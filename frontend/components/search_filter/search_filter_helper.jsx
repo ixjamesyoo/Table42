@@ -3,13 +3,11 @@ export const relevantHashSubstring = (hashString, filterType) => {
     hashString.slice(1).split("&").filter(substring => {
       return substring.startsWith(filterType);
     })[0] : "";
-    // e.g "some_key=1+2+3" or ""
 };
 
 export const parseSelections = hashSubstring => {
   return hashSubstring ?
     hashSubstring.split("=")[1].split("+") : [];
-    // these are strings i.e "1", "2"
 };
 
 export const optionCheckedStatus = (choicesArray, checkedInputs) => {
@@ -32,7 +30,6 @@ export const modifyCheckedInputsArray = (checkedInputs, target, choicesArray) =>
     const idx = checkedInputs.indexOf(
       (choicesArray.indexOf(target.value) + 1).toString()
     );
-    // debugger
     return checkedInputs.slice(0, idx).concat(checkedInputs.slice(idx+1));
   }
 };

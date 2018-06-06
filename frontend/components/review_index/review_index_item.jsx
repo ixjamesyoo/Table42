@@ -2,10 +2,6 @@ import React from "react";
 
 export default ({ review, currentUserId, deleteReview }) => {
 
-  // const editButton = () => {
-  //   return currentUserId === review.user_id ?
-  //     <button>Click Me</button> : null;
-  // };
   const handleDelete = (id) => {
     return () => deleteReview(id);
   };
