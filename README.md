@@ -12,11 +12,14 @@ Table42 employs full-text search and restaurant geocoding data to return only th
 
 ![table42-search](./public/specific-search.png)
 
-If the search bar is void of text (i.e. an empty string as the query), the application's default behavior is to substitute the user's city as a query parameter. The search result page also includes front-end filtering to dynamically re-render which restaurants are displayed. URL hash fragments reflect the current filter selections, allowing shareable/savable links.
+If the search bar is void of text (i.e. an empty string as the query), the application's default behavior is to substitute the user's city as a query parameter. The search result page also includes front-end filtering to dynamically re-render which restaurants are displayed.
 
 ![table42-filter](./public/search-filter.png)
 
+URL hash fragments reflect the current filter selections, allowing shareable/savable links.
+
 ![table42-url](./public/search-url.png)
+
 
 A higher-order React component was designed to allow multiple search filters to be easily implemented.
 
@@ -65,4 +68,4 @@ Table42 ensures a strong user experience with all actions accompanied by visual 
 
 * Implementing fuzzy and trigram search to handle minor misspellings or phonetic spellings of restaurant names
 * Refactoring the search bar to include date-time and party size parameters, yielding a more specific subset of results
-* Reconfiguring the reservation form to present multiple available time options, rather than immediately attempt to book the requested time. 
+* Reconfiguring the reservation form to present multiple available time options, rather than immediately attempt to book the requested time.
