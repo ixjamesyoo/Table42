@@ -4,10 +4,10 @@ class Api::RestaurantsController < ApplicationController
     if params[:query]
       city = current_user ? current_user.city : "New York City"
       @restaurants = Restaurant.search_by_query(params[:query]).near(city)
-        .includes(:cuisines).order(:name)
+        .includes(:cuisines, :reviews).order(:name)
     elsif params[:city]
       city = params[:city].gsub(/\+/, " ")
-      @restaurants = Restaurant.near(city).includes(:cuisines)
+      @restaurants = Restaurant.near(city).includes(:cuisines, :reviews)
     end
 
     if @restaurants.length > 0
