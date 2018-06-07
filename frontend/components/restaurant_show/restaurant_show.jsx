@@ -16,6 +16,13 @@ class RestaurantShow extends React.Component {
     window.scrollTo(0,0);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      nextProps.fetchRestaurant();
+      window.scrollTo(0,0);
+    }
+  }
+
   mainContent(){
     const { restaurant } = this.props;
 
