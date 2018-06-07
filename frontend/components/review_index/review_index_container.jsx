@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { openModal } from "../../actions/modal_actions";
-import { clearReviewConfirmation, deleteReview } from "../../actions/review_actions";
+import { clearReviewConfirmation, deleteReview, clearReviewErrors } from "../../actions/review_actions";
 import ReviewIndex from "./review_index";
 
 const mapStateToProps = ({ entities, session, ui }, { match }) => {
@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch, { match }) => {
     openEditReview: (id) => dispatch(openModal("edit review", id)),
     openLogin: () => dispatch(openModal("login")),
     clearReviewConfirmation: () => dispatch(clearReviewConfirmation()),
+    clearReviewErrors: () => dispatch(clearReviewErrors()),
     deleteReview: (id) => dispatch(deleteReview(id))
   });
 };

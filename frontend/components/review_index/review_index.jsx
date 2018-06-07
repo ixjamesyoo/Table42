@@ -7,6 +7,11 @@ export default class ReviewIndex extends React.Component {
     this.handleReview = this.handleReview.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearReviewErrors();
+    this.props.clearReviewConfirmation();
+  }
+
   handleReview(e){
     e.preventDefault();
 
