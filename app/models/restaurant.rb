@@ -111,26 +111,26 @@ class Restaurant < ApplicationRecord
   end
 
   def overall_rating
-    self.reviews.average(:overall_rating).round(1)
+    self.reviews.any? ? self.reviews.average(:overall_rating).round(1) : 0
   end
 
   def recommendation_rate
-    self.reviews.average(:recommended).round(2)
+    self.reviews.any? ? self.reviews.average(:recommended).round(2) : 0
   end
 
   def food_rating
-    self.reviews.average(:food_rating).round(1)
+    self.reviews.any? ? self.reviews.average(:food_rating).round(1) : 0
   end
 
   def ambience_rating
-    self.reviews.average(:ambience_rating).round(1)
+    self.reviews.any? ? self.reviews.average(:ambience_rating).round(1) : 0
   end
 
   def service_rating
-    self.reviews.average(:service_rating).round(1)
+    self.reviews.any? ? self.reviews.average(:service_rating).round(1) : 0
   end
 
   def value_rating
-    self.reviews.average(:value_rating).round(1)
+    self.reviews.any? ? self.reviews.average(:value_rating).round(1) : 0
   end
 end
