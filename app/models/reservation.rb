@@ -12,7 +12,7 @@
 
 class Reservation < ApplicationRecord
   validates :user_id, :restaurant_id, :table_size,
-    :start_datetime, :end_datetime, null: false
+    :start_datetime, :end_datetime, presence: true
   validates :table_size, inclusion: { in: 1..20 }
 
   validate :upcoming_reservation
